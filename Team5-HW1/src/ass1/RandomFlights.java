@@ -3,6 +3,8 @@ package ass1;
 import java.util.ArrayList;
 import java.util.Random;
 
+import beans.FlightResultBean;
+
 /**
  * 
  * RandomFlights generate random information for the number of flights required
@@ -19,14 +21,16 @@ public class RandomFlights {
 	public RandomFlights(int nFlights) {
 		super();
 		rn = new Random();
-		flights = new ArrayList<FlightInfo>(nFlights);
+		flights = new ArrayList<FlightResultBean>(nFlights);
 		for(int i = 0; i < nFlights; ++i) {
-			FlightInfo fInfo = new FlightInfo();
+			FlightResultBean fInfo = new FlightResultBean();
+			fInfo.setNumberOfFlight(Math.abs(rn.nextInt()%10));
+			fInfo.setDate("date");
 			fInfo.setArrivalTime(new Integer(Math.abs(rn.nextInt()%24)).toString() +
 					"h" + new Integer(Math.abs(rn.nextInt()%60)).toString());
 			fInfo.setDepartureTime(new Integer(Math.abs(rn.nextInt()%24)).toString() +
 					"h" + new Integer(Math.abs(rn.nextInt()%60)).toString());
-			fInfo.setnStops(Math.abs(rn.nextInt()%4));
+			fInfo.setNumberOfStops(Math.abs(rn.nextInt()%4));
 			fInfo.setCost(rn.nextFloat()*300f + 40f);
 			flights.add(fInfo);
 		}
@@ -37,10 +41,14 @@ public class RandomFlights {
 	 * @param index - the index of the desired object
 	 * @return - the FlightInfo object at index position
 	 */
-	public FlightInfo getFlight(int index) {
+	public FlightResultBean getFlight(int index) {
 		return flights.get(index);
 	}
+
+	public ArrayList<FlightResultBean> getFlights() {
+		return flights;
+	}
 	
-	ArrayList<FlightInfo> flights;
-	static Random rn; 
+	private ArrayList<FlightResultBean> flights;
+	private static Random rn; 
 }

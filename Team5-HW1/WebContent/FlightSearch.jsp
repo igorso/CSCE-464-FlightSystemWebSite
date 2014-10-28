@@ -34,13 +34,13 @@ function validateForm() {
 
 <body>
 <h1> Flight Search Query Page</h1>
-	<form  name="flightSearch" action="./FlightResults.jsp" onsubmit="return validateForm()"> 
+	<form  name="flightSearch" method="post" action="FlightSearch" onsubmit="return validateForm()"> 
 		<p> Insert your flight querying data:</p>
 		Source:      <input type="text" name="source"><br/>
 		Destination: <input type="text" name="destination"><br/>
 		Date of travel: <input type="text" name="date"><br/>
 		Number of seats: <input type="text" name="nSeats"><br/>
-		Class:<select name="class">
+		Class:<select name="flightClass">
 				<option value="economy">Economy
 				<option value="business">Business
 				<option value="first">First

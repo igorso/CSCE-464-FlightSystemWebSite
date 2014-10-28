@@ -37,7 +37,7 @@ public class User {
 	 */
 	public static Hashtable<String, String> get_infos() throws FileNotFoundException{
 		
-		Scanner s = new Scanner(new File("C:\\Users\\Igor\\Desktop\\UNL\\CSCE 464 - InternetSys&Programm\\FlightSystem\\Team5-HW1\\users.properties"));
+		Scanner s = new Scanner(new File("C:\\Users\\Igor\\git\\CSCE-464-FlightSystemWebSite\\Team5-HW1\\users.properties"));
 		//To do use a relative path
 		String read_password=new String();
 		String read_usrname=new String();
@@ -85,7 +85,7 @@ public class User {
 			//this username is already taken, please choose an other
 			return false;
 		} else {
-			FileWriter writer = new FileWriter("C:\\Users\\Igor\\Desktop\\UNL\\CSCE 464 - InternetSys&Programm\\FlightSystem\\Team5-HW1\\users.properties",true);
+			FileWriter writer = new FileWriter("C:\\Users\\Igor\\git\\CSCE-464-FlightSystemWebSite\\Team5-HW1\\users.properties",true);
 		    writer.write(usrname+" "+password+"\n");
 	    	writer.close();
 			return true;
