@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import beans.FlightResultBean;
+import beans.FlightSearchBean;
 
 /**
  * 
@@ -18,14 +19,14 @@ public class RandomFlights {
 	 * Generate random values to fulfill FlightInfo objects present at RandomFlights
 	 * @param nFlights - the number of flight results setted by the FlightResults.jsp
 	 */
-	public RandomFlights(int nFlights) {
+	public RandomFlights(FlightSearchBean flightBean, int nFlights) {
 		super();
 		rn = new Random();
 		flights = new ArrayList<FlightResultBean>(nFlights);
 		for(int i = 0; i < nFlights; ++i) {
 			FlightResultBean fInfo = new FlightResultBean();
-			fInfo.setNumberOfFlight(Math.abs(rn.nextInt()%10));
-			fInfo.setDate("date");
+			fInfo.setNumberOfFlight(i);
+			fInfo.setDate(flightBean.getDateOfTravel());
 			fInfo.setArrivalTime(new Integer(Math.abs(rn.nextInt()%24)).toString() +
 					"h" + new Integer(Math.abs(rn.nextInt()%60)).toString());
 			fInfo.setDepartureTime(new Integer(Math.abs(rn.nextInt()%24)).toString() +

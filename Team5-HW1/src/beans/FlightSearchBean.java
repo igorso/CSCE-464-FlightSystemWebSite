@@ -7,6 +7,14 @@ public class FlightSearchBean {
 	private int numberOfSeats;
 	private String flightClass;
 	
+	public FlightSearchBean() {
+		this.source = "";
+		this.destination = "";
+		this.dateOfTravel = "";
+		this.numberOfSeats = 0;
+		this.flightClass = "";
+	}
+	
 	public String getSource() {
 		return source;
 	}

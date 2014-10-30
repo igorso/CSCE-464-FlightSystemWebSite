@@ -39,4 +39,34 @@
     <servlet-name>FlightSearch</servlet-name>
     <url-pattern>/FlightSearch</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FlightResults</display-name>
+    <servlet-name>FlightResults</servlet-name>
+    <servlet-class>ass1.FlightResults</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FlightResults</servlet-name>
+    <url-pattern>/FlightResults</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewAndBook</display-name>
+    <servlet-name>ViewAndBook</servlet-name>
+    <servlet-class>ass1.ViewAndBook</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAndBook</servlet-name>
+    <url-pattern>/ViewAndBook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransactionConfirmation</display-name>
+    <servlet-name>TransactionConfirmation</servlet-name>
+    <servlet-class>ass1.TransactionConfirmation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactionConfirmation</servlet-name>
+    <url-pattern>/TransactionConfirmation</url-pattern>
+  </servlet-mapping>
 </web-app>
