@@ -19,7 +19,8 @@ public class User {
 	 * @return     true if the login is successful, false else
 	 */
 	public static boolean login_successfull(String usrname, String password) throws FileNotFoundException {
-		Hashtable<String, String> users = get_infos();
+		return true;
+		/*Hashtable<String, String> users = get_infos();
 		System.out.println(users.get(usrname)+" "+password);
 		if (user_exists(usrname)==false){
 			return false;
@@ -28,7 +29,7 @@ public class User {
 			return true;
 		}else{
 			return false;
-		}
+		}*/
 	}
 	/**
 	 * get_infos() get all the users in the property file
