@@ -1,11 +1,14 @@
 package ass1;
 
 import java.io.IOException;
+
 import ass1.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
@@ -50,7 +53,10 @@ public class Login extends HttpServlet {
         
         if (User.login_successfull(user, pwd)==true)
         {
-    		System.out.println("Login successful");
+    		HttpSession session = request.getSession(true);
+    		session.setAttribute("session_username", user);
+        	
+        	System.out.println("Login successful");
     		response.sendRedirect("LoginSuccess.jsp");
         	
         }else{
