@@ -1,7 +1,9 @@
 package ass1;
 
 import java.io.IOException;
-import ass1.User;
+import java.sql.SQLException;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,15 +52,20 @@ public class Registration extends HttpServlet {
         String pwd = request.getParameter("pwd");
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
-        if (User.registration_successfull(user, pwd)==true)
-        {
-    		System.out.println("Registration successful");
-    		response.sendRedirect("Login.jsp");
-        	
-        }else{
-       		System.out.println("This username is already taken");
-       		response.sendRedirect("Registration.jsp");
-        }
+        try {
+			if (UserSQL.registration_successfull(user, pwd))
+			{
+				System.out.println("Registration successful");
+				response.sendRedirect("Login.jsp");
+				
+			}else{
+				System.out.println("This username is already taken");
+				response.sendRedirect("Registration.jsp");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

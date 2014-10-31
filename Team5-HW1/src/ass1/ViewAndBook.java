@@ -1,12 +1,17 @@
 package ass1;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import beans.DetailedFlightBean;
+import beans.FlightSearchBean;
 
 public class ViewAndBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,19 +45,35 @@ public class ViewAndBook extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int nChosenSeats = 0;
 		String snChosenSeats = request.getParameter("numberOfSeats");
-		if((snChosenSeats != null) && (snChosenSeats.trim().equals("")))
+
+		
 			nChosenSeats = Integer.parseInt(snChosenSeats);
+			System.out.println("You want "+nChosenSeats+" seats");
+		boolean thereIsEnoughSeat=false;
+		
+		HttpSession session =request.getSession();
+		DetailedFlightBean parameters= (DetailedFlightBean) session.getAttribute("selectedFlight");
+		// Query the database to search for the selected flight
+		
+		DetailedFlightBean flight = null;
+		try {
+			thereIsEnoughSeat = FlightsBookSQL.SeatsAvailable(parameters, nChosenSeats);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Query the database to see if there are nChosenSeats available at the desired flight class
 		// Remember there is a DetailedFlightBean set up as a session attribute under key "selectedFlight"
-		if(/*!thereIsEnoughSeats()*/false) {
-			
+		if(thereIsEnoughSeat) {
+			System.out.println("You are lucky, there is still "+nChosenSeats +" available");
 		}
 		else {
+			System.out.println("Sorry, we do not have "+nChosenSeats +" available");
 		}
 		
 		// Needs to calculate the cost of this flight
-		float cost = 0f;
+		float cost = parameters.getCost()*nChosenSeats;
 		
 		// Redirects to the transaction page. Put nChosenSeats and cost at the request before forwarding
 		request.setAttribute("seats", nChosenSeats);

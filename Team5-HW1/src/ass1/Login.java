@@ -1,8 +1,9 @@
 package ass1;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import ass1.User;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,18 +52,23 @@ public class Login extends HttpServlet {
         String pwd = request.getParameter("pwd");
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
-        if (User.login_successfull(user, pwd)==true)
-        {
-    		HttpSession session = request.getSession(true);
-    		session.setAttribute("session_username", user);
-        	
-        	System.out.println("Login successful");
-    		response.sendRedirect("LoginSuccess.jsp");
-        	
-        }else{
-       		System.out.println("You are not registered yet");
-       		response.sendRedirect("Login.jsp");
-        }
+        try {
+			if (UserSQL.login_successfull(user, pwd)==true)
+			{
+				HttpSession session = request.getSession(true);
+				session.setAttribute("session_username", user);
+				
+				System.out.println("Login successful");
+				response.sendRedirect("LoginSuccess.jsp");
+				
+			}else{
+				System.out.println("You are not registered yet");
+				response.sendRedirect("Login.jsp");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

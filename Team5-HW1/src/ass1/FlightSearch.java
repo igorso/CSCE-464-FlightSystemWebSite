@@ -42,7 +42,7 @@ public class FlightSearch extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 
+		 
 		FlightSearchBean flightBean;
 		if(request.getParameter("backToFlightResults") == null) {
 			flightBean = populateFlightBean(request);

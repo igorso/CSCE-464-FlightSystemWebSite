@@ -1,8 +1,9 @@
 package beans;
 
 public class DetailedFlightBean {
-	private int id;
-	private int plane;
+	private int id; //id flight
+	private int plane; //id plane
+	private float cost; //cost of 1 flight
 	private String operator;
 	private String source;
 	private String destination;
@@ -11,18 +12,19 @@ public class DetailedFlightBean {
 	private int economyReserved;
 	private String departure;
 	private String arrival;
+	private String flightClass;
 	
-	public DetailedFlightBean(int id) {
-		this.id = id;
-		this.plane = 42;
-		this.operator = "Operator";
-		this.source = "Source";
-		this.destination = "Destination";
-		this.firstClassReserved = 10;
-		this.businessReserved = 12;
-		this.economyReserved = 18;
-		this.departure = "10/27/2014";
-		this.arrival = "10/28/2014";
+	public DetailedFlightBean() {
+		this.id = 0;
+		this.plane = 0;
+		this.operator = "DEFAULT";
+		this.source = "DEFAULT";
+		this.destination = "DEFAULT";
+		this.firstClassReserved = 0;
+		this.businessReserved = 0;
+		this.economyReserved = 0;
+		this.departure = "DEFAULT";
+		this.arrival = "DEFAULT";
 	}
 	
 	public int getId() {
@@ -41,7 +43,14 @@ public class DetailedFlightBean {
 		return operator;
 	}
 	public void setOperator(String operator) {
+		
 		this.operator = operator;
+	}
+	public float getCost() {
+		return cost;
+	}
+	public void setCost(float cost) {
+		this.cost = cost;
 	}
 	public String getSource() {
 		return source;
@@ -84,6 +93,12 @@ public class DetailedFlightBean {
 	}
 	public void setArrival(String arrival) {
 		this.arrival = arrival;
+	}
+	public String getFlightClass() {
+		return flightClass;
+	}
+	public void setFlightClass(String flightClass) {
+		this.flightClass = flightClass;
 	}
 	
 }

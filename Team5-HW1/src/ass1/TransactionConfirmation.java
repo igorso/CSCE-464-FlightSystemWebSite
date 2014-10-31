@@ -44,7 +44,10 @@ public class TransactionConfirmation extends HttpServlet {
 		// On success the booking details are added to the booking history via the booking model
 		// Redirect user to the TransactionConfirmation.jsp page with flight details and 
 		// transaction status (Success/Failure)
-
+		
+		//Have to get all the parameters:
+		//AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, user_id, totalCost, numberOfSeats)
+		//return 1 when it is a success/ 2 when it is not.
 		request.setAttribute("transaction", new Boolean(true));
 		
 		//Dispatch results to view JSP
