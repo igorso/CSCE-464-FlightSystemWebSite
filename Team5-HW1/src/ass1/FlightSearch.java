@@ -1,6 +1,7 @@
 package ass1;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -52,7 +53,15 @@ public class FlightSearch extends HttpServlet {
 		}
 		
 		// Query the database to search for matching flight results
-		ArrayList<FlightResultBean> dbResults = queryDataBase(flightBean);
+		ArrayList<FlightResultBean> dbResults=null;
+		try {
+			
+			dbResults = FlightsSearchSQL.lookFlights(flightBean);
+			System.out.println("End of the request"+dbResults.isEmpty());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Using scope="request" because the specific results just interest
 		// the FlightResults.jsp page

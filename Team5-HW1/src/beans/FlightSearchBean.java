@@ -8,11 +8,11 @@ public class FlightSearchBean {
 	private String flightClass;
 	
 	public FlightSearchBean() {
-		this.source = "";
-		this.destination = "";
-		this.dateOfTravel = "";
-		this.numberOfSeats = 0;
-		this.flightClass = "";
+		this.source = "MIA";
+		this.destination = "ORD";
+		this.dateOfTravel = "2014-09-30 11:41:00";
+		this.numberOfSeats = 1;
+		this.flightClass = "business";
 	}
 	
 	public String getSource() {
