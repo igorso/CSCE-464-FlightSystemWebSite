@@ -59,11 +59,25 @@ public class TransactionConfirmation extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println("The error returned by the booking is "+ error);
+		
+		String errorMessage = "";
+		switch(error) {
 		//0 if everything was OK
 		//1 if the account was not found
 		//2 if there is not enough money
-		//3 if there is a database problem		
-		request.setAttribute("transaction", new Boolean(true));
+		//3 if there is a database problem
+		//case 0: message = "The transaction was a success!"; break;
+		case 1: errorMessage = "Sorry, the desidered account was not found."; break;
+		case 2: errorMessage = "The account's balance was not enough to complete the transaction."; break;
+		case 3: errorMessage = "There was a problem with your Bank DataBase. Your transaction failed."; break;
+		}
+		
+		if(error == 0)
+			request.setAttribute("transaction", new Boolean(true));
+		else {
+			request.setAttribute("transaction", new Boolean(false));
+			request.setAttribute("errorMessage", errorMessage);
+		}
 		
 		//Dispatch results to view JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("TransactionConfirmation.jsp");

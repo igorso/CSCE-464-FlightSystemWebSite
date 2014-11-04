@@ -37,7 +37,7 @@
 	
 	function isEmailAddress(str) {
 		var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-	    alert(str.match(pattern)); 
+	    //alert(str.match(pattern)); 
 	    return str.match(pattern);    
 
 	}

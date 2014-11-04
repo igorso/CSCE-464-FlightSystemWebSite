@@ -52,7 +52,7 @@
 								ArrayList<FlightResultBean> dbResults = (ArrayList<FlightResultBean>) request
 										.getAttribute("dbResults");
 							%>
-							<form action="./FlightResults" method="post">
+							<form action="./FlightResults" name="flightSelector" method="post" onsubmit="return atLeastOneRadio()">
 								<div class="FlightTable" id="flightResultsTable">
 									<table>
 										<thead>
@@ -106,6 +106,16 @@
 		</div>
 	</div>
 
+	<script>
+	function atLeastOneRadio() {
+	    var isChecked = $('input[type=radio]:checked').size() > 0;
+		if (!isChecked) {
+	    	alert("You must select a flight.");
+	    	return isChecked;
+	    }
+	}
+	</script>
+	
 	<!-- JavaScript at the bottom for fast page loading -->
 
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
