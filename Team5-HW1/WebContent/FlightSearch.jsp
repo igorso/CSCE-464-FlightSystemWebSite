@@ -83,6 +83,8 @@ $(document).ready(function(){
 
 <body>
 
+<jsp:include page="Header.jsp"></jsp:include>
+
 <div id="wrapper">
 		<div id="headcontainer">
 			<header>

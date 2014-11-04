@@ -10,7 +10,7 @@
 		<%
 		if(request.getSession(false).getAttribute("session_username") != null) {
 		%>
-		<button onclick="logout">Logout</button>
+		<a href="Logout">Logout</a>
 		<%
 		}
 		%>

@@ -11,7 +11,11 @@
 	function validateForm() {
 		var x = document.forms["Register"]["user"].value;
 		if (x == null || x == "") {
-			alert("User name must be filled out");
+			alert("Email must be filled out");
+			return false;
+		}
+		if(!isEmailAddress(x)) {
+			alert("Email must be a valid email address");
 			return false;
 		}
 		var y = document.forms["Register"]["pwd"].value;
@@ -30,6 +34,13 @@
 			return false;
 		}
 	}
+	
+	function isEmailAddress(str) {
+		var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	    alert(str.match(pattern)); 
+	    return str.match(pattern);    
+
+	}
 </script>
 </head>
 <body>
@@ -37,10 +48,10 @@
 	<H2>Please fill out the form</H2>
 	<form name="Register" action="Registration" method="post"
 		onsubmit="return validateForm()">
-		Username: <input type="text" name="user"> <br> Password:
-		<input type="password" name="pwd"> <br> Confirm: <input
-			type="password" name="pwd_confirm"> <br> <input
-			class="ClickButton" type="submit" value="Registration">
+		Email: <input type="text" name="user"> <br>
+		Password: <input type="password" name="pwd"> <br>
+		Confirm: <input	type="password" name="pwd_confirm"> <br>
+		<input class="ClickButton" type="submit" value="Registration">
 	</form>
 	<a href="/Team5-HW1/Login.jsp">Back to login page</a>
 </body>
