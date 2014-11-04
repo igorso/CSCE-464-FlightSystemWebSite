@@ -42,7 +42,7 @@ public class FlightSearch extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 
+		 
 		FlightSearchBean flightBean;
 		if(request.getParameter("backToFlightResults") == null) {
 			flightBean = populateFlightBean(request);
@@ -57,7 +57,7 @@ public class FlightSearch extends HttpServlet {
 		try {
 			
 			dbResults = FlightsSearchSQL.lookFlights(flightBean);
-			System.out.println("End of the request"+dbResults.isEmpty());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

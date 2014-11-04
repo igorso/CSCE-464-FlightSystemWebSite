@@ -32,7 +32,7 @@ public class RandomFlights {
 			fInfo.setDepartureTime(new Integer(Math.abs(rn.nextInt()%24)).toString() +
 					"h" + new Integer(Math.abs(rn.nextInt()%60)).toString());
 			fInfo.setNumberOfStops(Math.abs(rn.nextInt()%4));
-			fInfo.setCost(rn.nextFloat()*300f + 40f);
+			//fInfo.setCost(rn.nextInt()*300f + 40f);
 			flights.add(fInfo);
 		}
 	}
