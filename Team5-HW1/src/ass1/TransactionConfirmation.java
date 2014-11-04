@@ -1,8 +1,12 @@
 package ass1;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import com.itextpdf.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,7 +74,35 @@ public class TransactionConfirmation extends HttpServlet {
 		request.setAttribute("transaction", new Boolean(true));
 		
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("TransactionConfirmation.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("TransactionConfirmation.jsp");
+		//dispatcher.forward(request, response);
+		
+	}
+	
+	public void PDF (HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+		//Get the data from the session:
+		
+		//HttpSession session = request.getSession();
+		DetailedFlightBean flightDetail = new DetailedFlightBean();//(DetailedFlightBean) session.getAttribute("selectedFlight");		
+		UserBean userBean = new UserBean();//(UserBean) session.getAttribute("userBean");
+		//ManagementPDF.printPDF(flightDetail, userBean);
+		
+		
+		String pdfFileName = "FirstPDF.pdf";
+		String contextPath = getServletContext().getRealPath(File.separator);
+		File pdfFile = new File(contextPath + pdfFileName);
+		
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
+		response.setContentLength((int) pdfFile.length());
+		
+		FileInputStream fileInputStream = new FileInputStream(pdfFile);
+		OutputStream responseOutputStream = response.getOutputStream();
+		int bytes;
+		while ((bytes = fileInputStream.read()) != -1) {
+			responseOutputStream.write(bytes);
+		}
+
+
 	}
 }
