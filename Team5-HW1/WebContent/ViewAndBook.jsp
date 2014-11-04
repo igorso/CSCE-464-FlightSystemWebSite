@@ -29,6 +29,9 @@
 
 </head>
 <body>
+
+	<jsp:include page="Header.jsp"></jsp:include>
+
 	<jsp:useBean id="selectedFlight" type="beans.DetailedFlightBean"
 		scope="session" />
 
@@ -158,21 +161,6 @@
 			alert("Input number of seats is not an integer");
 			return false;
 		}
-		
-		/*if (x == null || x == "") {
-			alert("Source must be filled out");
-			return false;
-		}
-		else if(x <= 0) {
-			alert("Number of seats has to be greater than zero");
-			return false;
-		}
-		else if(x !== parseInt(x, 10)) {
-			alert("Input number of seats is not an integer");
-			return false;
-		}*/
-		
-
 	}
 </script>
 

@@ -61,6 +61,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>ass1.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>TransactionConfirmation</display-name>
     <servlet-name>TransactionConfirmation</servlet-name>
     <servlet-class>ass1.TransactionConfirmation</servlet-class>

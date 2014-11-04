@@ -1,10 +1,16 @@
 package ass1;
-import beans.*;
-
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Random;
+
+import beans.FlightResultBean;
+import beans.FlightSearchBean;
 
 
 public class FlightsSearchSQL {

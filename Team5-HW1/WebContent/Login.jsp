@@ -72,7 +72,7 @@
 							<div>
 								<form name="Login" action="Login" method="post"
 									onsubmit="return validateForm()">
-									<p><label class="field">Username:</label> <input class="TextBox" type="text" name="user"></p>
+									<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user"></p>
 									<p><label class="field">Password:</label> <input class="TextBox" type="password" name="pwd">
 									<input class="ClickButton" type="submit" value="Login" align="right"></p>
 								</form>
