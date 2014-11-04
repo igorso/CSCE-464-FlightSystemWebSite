@@ -82,21 +82,6 @@
 															property="destination" /></label></td>
 											</tr>
 											<tr>
-												<td><label>1st class occupied seats:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="firstClassReserved" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Business class occupied seats:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="businessReserved" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Economy class occupied seats:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="economyReserved" /></label></td>
-											</tr>
-											<tr>
 												<td><label>Departure:</label></td>
 												<td><label><jsp:getProperty name="selectedFlight"
 															property="departure" /></label></td>
@@ -108,11 +93,13 @@
 											</tr>
 											<tr>
 												<td><label>Number of seats:</label></td>
-												<td><label>TODO</label></td>
+												<td><label><jsp:getProperty name="selectedFlight"
+															property="numberOfSeat" /></label></td>
 											</tr>
 											<tr>
-												<td><label>Cost:</label></td>
-												<td><label>TODO</label></td>
+												<td><label>Cost per passenger:</label></td>
+												<td><label><jsp:getProperty name="selectedFlight"
+															property="cost" /></label></td>
 											</tr>
 										</tbody>
 									</table>
@@ -141,7 +128,12 @@
 	}
 	else {
 	%>
-		<p>The transaction failed. Display the reason</p>
+		<div class="section group">
+			<p><%= request.getAttribute("errorMessage") %></p>
+			<form action="./FlightSearch.jsp">
+				<input class="ClickButton" type="submit" value="Home">
+			</form>
+		</div>
 	<%
 	}
 	%>

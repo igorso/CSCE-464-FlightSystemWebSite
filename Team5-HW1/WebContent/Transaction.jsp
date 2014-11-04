@@ -86,21 +86,6 @@
 														property="destination" /></label></td>
 										</tr>
 										<tr>
-											<td><label>1st class occupied seats:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="firstClassReserved" /></label></td>
-										</tr>
-										<tr>
-											<td><label>Business class occupied seats:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="businessReserved" /></label></td>
-										</tr>
-										<tr>
-											<td><label>Economy class occupied seats:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="economyReserved" /></label></td>
-										</tr>
-										<tr>
 											<td><label>Departure:</label></td>
 											<td><label><jsp:getProperty name="selectedFlight"
 														property="departure" /></label></td>
@@ -116,7 +101,7 @@
 						</div>
 	
 						<div class="col span_1_of_3">
-							<form action="./TransactionConfirmation" method="post">
+							<form action="./TransactionConfirmation" name="bankInfo" method="post" onsubmit="return validateForm()">
 								<label class="field">Account:</label><input class="TextBox" type="text" name="accountId"><br>
 								<label class="field">Holder:</label><input class="TextBox" type="text" name="holderId"><br>
 								<label class="field">Routing:</label><input class="TextBox" type="text" name="routing"><br>
@@ -136,6 +121,28 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		function validateForm() {
+			var account = document.forms["bankInfo"]["accountId"].value;
+			if(account == null || account == "") {
+				alert("Account ID must be filled.");
+				return false;
+			}
+			
+			var holder = document.forms["bankInfo"]["holderId"].value;
+			if(holder == null || holder == "") {
+				alert("Holder ID must be filled.");
+				return false;
+			}
+			
+			var routing = document.forms["bankInfo"]["routing"].value;
+			if(routing == null || routing == "") {
+				alert("Routing number must be filled.");
+				return false;
+			}
+		}
+	</script>
 
 	<!-- JavaScript at the bottom for fast page loading -->
 
