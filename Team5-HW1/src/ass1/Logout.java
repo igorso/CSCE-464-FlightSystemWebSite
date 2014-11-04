@@ -2,7 +2,7 @@ package ass1;
 
 import java.io.IOException;
 
-import ass1.User;
+import ass1.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

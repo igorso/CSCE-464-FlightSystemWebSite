@@ -10,7 +10,7 @@ public class FlightSearchBean {
 	public FlightSearchBean() {
 		this.source = "MIA";
 		this.destination = "ORD";
-		this.dateOfTravel = "2014-09-30 11:41:00";
+		this.dateOfTravel = "01/01/2015";
 		this.numberOfSeats = 1;
 		this.flightClass = "business";
 	}

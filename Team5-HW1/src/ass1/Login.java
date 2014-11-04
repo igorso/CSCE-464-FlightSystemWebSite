@@ -5,11 +5,16 @@ import java.sql.SQLException;
 
 
 
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import beans.FlightSearchBean;
+import beans.UserBean;
 
 /**
  * Servlet implementation class Login
@@ -45,20 +50,28 @@ public class Login extends HttpServlet {
 	 * @see User.java
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+
 		
 		//get request parameters for userID and password
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
+        
+        UserBean userBean = new UserBean();
+        userBean.setEmail(user);
+        userBean.setPassword(pwd);
+        
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
         try {
-			if (UserSQL.login_successfull(user, pwd)==true)
+        	int userId=UserSQL.login_successfull(user, pwd); //return -1 if error, user_id if no error
+			if (userId!=-1)
 			{
+				userBean.setId(userId);
 				HttpSession session = request.getSession(true);
-				session.setAttribute("session_username", user);
-				
+				session.setAttribute("userBean", userBean);
 				System.out.println("Login successful");
+				
 				response.sendRedirect("LoginSuccess.jsp");
 				
 			}else{

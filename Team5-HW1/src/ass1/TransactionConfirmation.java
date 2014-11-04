@@ -51,6 +51,10 @@ public class TransactionConfirmation extends HttpServlet {
 		HttpSession session = request.getSession();
 		parameters = (DetailedFlightBean) session.getAttribute("selectedFlight");
 		
+		UserBean userBean = (UserBean) session.getAttribute("userBean");
+		int user_id=userBean.getId();
+		System.out.println("The user id is:"+ user_id);
+		
 		//Have to get all the parameters:
 		try {
 			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, 5);

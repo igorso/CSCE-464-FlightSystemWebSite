@@ -46,6 +46,9 @@
 </script>
 
 </head>
+<jsp:useBean id="userBean" class="beans.UserBean"
+	scope="session" />
+	
 <body>
 
 	<div id="wrapper">
@@ -72,9 +75,11 @@
 							<div>
 								<form name="Login" action="Login" method="post"
 									onsubmit="return validateForm()">
-									<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user"></p>
+									<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user" 
+									value=<jsp:getProperty property="email" name="userBean"/>></p>
 									<p><label class="field">Password:</label> <input class="TextBox" type="password" name="pwd">
-									<input class="ClickButton" type="submit" value="Login" align="right"></p>
+									<input class="ClickButton" type="submit" value="Login" align="right"
+									value=<jsp:getProperty property="password" name="userBean"/>></p>
 								</form>
 								<a href="/Team5-HW1/Registration.jsp">New user: Please register</a>
 							</div>

@@ -87,7 +87,7 @@ public class UserSQL {
 		
 	}
 	
-	public static boolean login_successfull(String email, String password) throws SQLException
+	public static int login_successfull(String email, String password) throws SQLException
 	{
 		//Test login
 		//return 1 if the login is successfull, 0 else
@@ -110,17 +110,18 @@ public class UserSQL {
 				System.out.print ("User ID="+rs1.getString("id"));
 				System.out.print("  Email="+rs1.getString("email"));
 				System.out.println("  Pass="+rs1.getString("pass"));
-				jdbc.conn.close();
-				return(true);
+				int id=rs1.getInt("id");
 				
+				jdbc.conn.close();
+				return(id);
 			}
 			System.out.println("Login not Successful, please register");
 			jdbc.conn.close();
-			return(false);
+			return(-1);
 		}else {
 			System.out.println("A problem appeared");
 			jdbc.conn.close();
-			return(false);
+			return(-1);
 		}
 	}
 	
