@@ -55,6 +55,8 @@ public class ViewAndBook extends HttpServlet {
 		DetailedFlightBean parameters= (DetailedFlightBean) session.getAttribute("selectedFlight");
 		// Query the database to search for the selected flight
 		
+		
+		//Look in the database if there is still enough seats available:
 		DetailedFlightBean flight = null;
 		try {
 			thereIsEnoughSeat = FlightsBookSQL.SeatsAvailable(parameters, nChosenSeats);
@@ -63,8 +65,7 @@ public class ViewAndBook extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// Query the database to see if there are nChosenSeats available at the desired flight class
-		// Remember there is a DetailedFlightBean set up as a session attribute under key "selectedFlight"
+
 		if(thereIsEnoughSeat) {
 			System.out.println("You are lucky, there is still "+nChosenSeats +" available");
 		}
@@ -74,9 +75,10 @@ public class ViewAndBook extends HttpServlet {
 		
 		// Needs to calculate the cost of this flight
 		float cost = parameters.getCost()*nChosenSeats;
-		
+		parameters.setNumberOfSeat(nChosenSeats);
 		// Redirects to the transaction page. Put nChosenSeats and cost at the request before forwarding
 		request.setAttribute("seats", nChosenSeats);
+		
 		request.setAttribute("cost", cost);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Transaction.jsp");

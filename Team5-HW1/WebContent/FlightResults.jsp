@@ -75,8 +75,8 @@
 												<td><label><%=fInfo.getDepartureTime()%></label></td>
 												<td><label><%=fInfo.getArrivalTime()%></label></td>
 												<td><label><%=fInfo.getNumberOfStops()%></label></td>
-												<td><label><%=String.format("%.2f", fInfo.getCost())%></label>
-													<input type="hidden" name="cost" value=<%=fInfo.getCost()%>></td>
+												<td><label><%=fInfo.getCost()%></label></td>
+												<td><input type="hidden" name="cost" value=<%=fInfo.getCost()%>></td>
 												<td><input type="radio" name="flightNumber"
 													value=<%=fInfo.getNumberOfFlight()%>></td>
 											</tr>

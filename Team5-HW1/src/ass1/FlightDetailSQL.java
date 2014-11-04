@@ -14,7 +14,7 @@ public class FlightDetailSQL {
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
-	public static DetailedFlightBean getDetail(FlightSearchBean parameters, int id, float cost) throws SQLException{
+	public static DetailedFlightBean getDetail(FlightSearchBean parameters, int id, int cost) throws SQLException{
 		
 		//We get the data from the bean parameter:
 		FlightDetailSQL jdbc = new FlightDetailSQL("cse.unl.edu", "cse464", "sheili", "]34Dr3");

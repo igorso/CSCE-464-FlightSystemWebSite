@@ -1,6 +1,7 @@
 package ass1;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.FlightResultBean;
-import beans.FlightSearchBean;
+import beans.*;
 
 public class TransactionConfirmation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,10 +44,26 @@ public class TransactionConfirmation extends HttpServlet {
 		// On success the booking details are added to the booking history via the booking model
 		// Redirect user to the TransactionConfirmation.jsp page with flight details and 
 		// transaction status (Success/Failure)
+		int error=0;
+		int account_id=Integer.parseInt((String) request.getParameter("accountId"));
+		int holder_id=Integer.parseInt((String) request.getParameter("holderId"));
+		int routing_number=Integer.parseInt((String) request.getParameter("routing"));
+		DetailedFlightBean parameters= null;
+		HttpSession session = request.getSession();
+		parameters = (DetailedFlightBean) session.getAttribute("selectedFlight");
 		
 		//Have to get all the parameters:
-		//AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, user_id, totalCost, numberOfSeats)
-		//return 1 when it is a success/ 2 when it is not.
+		try {
+			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, 5);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("The error returned by the booking is "+ error);
+		//0 if everything was OK
+		//1 if the account was not found
+		//2 if there is not enough money
+		//3 if there is a database problem		
 		request.setAttribute("transaction", new Boolean(true));
 		
 		//Dispatch results to view JSP

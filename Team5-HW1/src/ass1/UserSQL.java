@@ -79,7 +79,7 @@ public class UserSQL {
 			jdbc.conn.close();
 			return(false);
 		}else {
-			System.out.println("A problem appeared");
+			System.out.println("A problem appeared in the database connection");
 			jdbc.conn.close();
 			return(true);
 		}

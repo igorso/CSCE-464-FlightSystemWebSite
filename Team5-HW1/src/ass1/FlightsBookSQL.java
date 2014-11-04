@@ -79,7 +79,7 @@ public class FlightsBookSQL {
 					
 					if(capacity-reserved>=numberSeats)
 					{
-						System.out.println("There is enough seats left");
+						//System.out.println("There is enough seats left");
 						jdbc.conn.close();
 						return(true);	
 					}else

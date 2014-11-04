@@ -22,73 +22,94 @@ public class AccountSQL {
 	 */
 	
 	
-	public static boolean transaction_successfull(
+	public static int transaction_successfull(
 		DetailedFlightBean parameters, 
 		int account_id, 
 		int holder_id, 
 		int routing_number, 
-		int user_id, //Hard to get...
-		int totalCost, 
-		int numberOfSeats) throws SQLException{
+		int user_id
+		) 
+				throws SQLException{
 		int flightId =parameters.getId();
-	
+		int numberOfSeats=parameters.getNumberOfSeat(); 
+		int totalCost=parameters.getCost()*numberOfSeats;
 		
+		int payementError= Payement(account_id,holder_id, routing_number,totalCost);
 		
-		
-		if (Payement(account_id,holder_id, routing_number,totalCost))
+		if (payementError==0)
 		{
-		System.out.println("Congrats! We are now uptdating the flights!");
+			System.out.println("Payement Successful! We are now uptdating our database!");
+				
 			
-		
-		AccountSQL jdbc = new AccountSQL("cse.unl.edu", "sheili", "sheili", "]34Dr3");
-		
-		//Insert a line in booking:
-		ArrayList<Object> param =  new ArrayList<Object>();
-		param.add(flightId);//What does it mean exactly????
-		param.add(numberOfSeats);
-		param.add(account_id);
-		param.add(user_id);
-		param.add(totalCost);
-		
-		param.add(Timestamp.valueOf("2014-09-30 11:41:00")); //date
-
-		
-		jdbc.updateDB("insert into bookings(date_of_booking,flight_ids,number_of_seats, accounts_id, user_id,total_cost) "
-				+ "values(NOW() ,? ,? ,?,?,? );"  
-            ,param); 
-		param.clear();
-		System.out.println("The booking table has been updated ");
-		
-		//Insert a line in booking flights:
-		param.add(45);//change it later/have to do a request to get the ID,
-		param.add(flightId);
-		jdbc.updateDB("insert into bookings_flights (booking_id, flights_id) "
+			AccountSQL jdbc = new AccountSQL("cse.unl.edu", "sheili", "sheili", "]34Dr3");
+			
+			//Insert a line in booking:
+			ArrayList<Object> param =  new ArrayList<Object>();
+			param.add(flightId);//What does it mean exactly????
+			param.add(numberOfSeats);
+			param.add(account_id);
+			param.add(user_id);
+			param.add(totalCost);
+			//param.add(Timestamp.valueOf("2014-09-30 11:41:00")); the date is now added automatically
+			jdbc.updateDB("insert into bookings(date_of_booking,flight_ids,number_of_seats, account_id, user_id,total_cost) "
+					+ "values(NOW(),? ,? ,? ,? ,? );"  
+	            ,param); 
+			param.clear();
+			
+			//Get the last ID of booking:
+			PreparedStatement ps = jdbc.conn.prepareStatement("SELECT id As LastID FROM bookings ORDER BY id DESC LIMIT 1;");
+			ResultSet rs2 = ps.executeQuery();
+			int lastID=0;
+			
+			if (rs2 != null){
+				if(rs2.next()){
+					lastID=rs2.getInt("LastID");
+					}
+				else
+				{
+					System.out.println("Last ID not found in the database");
+					return(3);
+				}
+			}else {
+				System.out.println("A problem appeared in the database connection");	
+				return(3);
+			}
+			
+			//Insert a line in booking flights:
+			param.add(lastID);
+			param.add(flightId);
+			jdbc.updateDB("insert into booking_flights (booking_id, flight_id) "
 				+ "values(?,?);"  
-            ,param); 		
-		System.out.println("The booking_flights table has been updated ");
-		
-		return (true);
+				,param); 		
+			
+			System.out.println("Update of the database finished");
+			
+			return (0);
 		}
 		else
 		{
-			System.out.println("Sorry it did not work... You are too poor!");
-		return(false);
+			System.out.println("Sorry the payement operation did not work, there is the error : " + payementError);
+			return(payementError);
 		}
 	}
-	public static boolean Payement(int account_id, int holder_id, int routing_number, int cost) throws SQLException
+	public static int Payement(int id, int holder_id, int routing_number, int cost) throws SQLException
 	{
+		//Return 0 if everything was OK
+		//Return 1 if the account was not found
+		//Return 2 if there is not enough money
+		//Return 3 if there is a database problem
 		AccountSQL jdbc = new AccountSQL("cse.unl.edu", "sheili", "sheili", "]34Dr3");
 		ArrayList<Object> param =  new ArrayList<Object>();
-		param.add(account_id);
+		param.add(id);
 		param.add(holder_id);
 		param.add(routing_number);
-		param.add(cost);
+		//param.add(cost);
 		
 		
 		ResultSet rs1 = jdbc.queryDB("SELECT balance, id "
 				+ "FROM accounts "
-				+ " WHERE account_id=?"
-				+ "AND holder_id=?"
+				+ " WHERE id=? "
+				+ "AND holder_id=? "
 				+ "AND routing_number=?"
 				, param);
 		param.clear();
@@ -97,38 +118,40 @@ public class AccountSQL {
 			
 			if(rs1.next()){
 				
-				System.out.print("We found the account, there is "+rs1.getString("balance")+ " $ on the account");
+				System.out.print("We found the account, there is "+rs1.getString("balance")+ "$ on the account");
 				if (rs1.getInt("balance")>cost)
 				{
-					System.out.println("That is enough. We proceed to the payement");
-					
+					System.out.println("It is enough to pay "+String.valueOf(cost)+"$. We proceed to the payement");
+					param.clear();
+
 					param.add(rs1.getInt("balance")-cost);
+					param.add(id);
+
 					jdbc.updateDB("UPDATE accounts "
 							+ "Set balance=? "
-							+ "Where accounts."
+							+ "Where accounts.id=?"
  
 		            ,param); 
 					
 					jdbc.conn.close();
-					return(true);
-					
+					return(0);
 				}
 				else
 				{
 					System.out.println("Not enough money");					
 					jdbc.conn.close();
-					return(false);
+					return(2);
 				}
 				
 			}
 			
 			System.out.println("Account not found");
 			jdbc.conn.close();
-			return(false);
+			return(1);
 		}else {
-			System.out.println("A problem appeared");
+			System.out.println("A problem appeared in the connection to the database");
 			jdbc.conn.close();
-			return(true);
+			return(3);
 		}
 		
 		

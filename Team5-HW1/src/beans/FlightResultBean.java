@@ -6,7 +6,7 @@ public class FlightResultBean {
 	private String departureTime;
 	private String arrivalTime;
 	private int numberOfStops;
-	private float cost;
+	private int cost;
 	
 	public int getNumberOfFlight() {
 		return numberOfFlight;
@@ -38,10 +38,10 @@ public class FlightResultBean {
 	public void setNumberOfStops(int numberOfStops) {
 		this.numberOfStops = numberOfStops;
 	}
-	public float getCost() {
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(float cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 }

@@ -43,13 +43,13 @@ public class FlightResults extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int flightNumber = 0;
-		float cost=0;
+		int cost=0;
 		String sFlightNumber = request.getParameter("flightNumber");
 		if((sFlightNumber != null) && (!sFlightNumber.trim().equals("")))
 			flightNumber = Integer.parseInt(sFlightNumber);
 		String costS = request.getParameter("cost");
 		if((costS != null) && (!costS.trim().equals("")))
-			cost = Float.parseFloat(costS);
+			cost = Integer.parseInt(costS);
 		
 		HttpSession session =request.getSession();
 		FlightSearchBean parameters= (FlightSearchBean) session.getAttribute("flightBean");

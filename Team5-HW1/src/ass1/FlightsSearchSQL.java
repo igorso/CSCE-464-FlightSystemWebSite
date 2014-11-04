@@ -45,7 +45,6 @@ public class FlightsSearchSQL {
 		*/
 		
 		System.out.println("We are looking to flights from "+source+" to "+destination+" between "+date +" and " +oneDayAfter);
-		System.out.println("Direct flights:");
 		
 		ResultSet rs1=null;
 		
@@ -76,7 +75,7 @@ public class FlightsSearchSQL {
 				result.setNumberOfStops(0);
 				
 				Random generator = new Random();
-				float randomNumber = 50+generator.nextFloat() * 50;
+				int randomNumber = 50+generator.nextInt(50);
 				result.setCost(randomNumber);
 				
 				

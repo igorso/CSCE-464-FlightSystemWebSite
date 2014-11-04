@@ -3,7 +3,7 @@ package beans;
 public class DetailedFlightBean {
 	private int id; //id flight
 	private int plane; //id plane
-	private float cost; //cost of 1 flight
+	private int cost; //cost of 1 flight
 	private String operator;
 	private String source;
 	private String destination;
@@ -13,6 +13,7 @@ public class DetailedFlightBean {
 	private String departure;
 	private String arrival;
 	private String flightClass;
+	private int numberOfSeat;
 	
 	public DetailedFlightBean() {
 		this.id = 0;
@@ -25,7 +26,8 @@ public class DetailedFlightBean {
 		this.economyReserved = 0;
 		this.departure = "DEFAULT";
 		this.arrival = "DEFAULT";
-	}
+		this.numberOfSeat=0;
+		}
 	
 	public int getId() {
 		return id;
@@ -46,10 +48,10 @@ public class DetailedFlightBean {
 		
 		this.operator = operator;
 	}
-	public float getCost() {
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(float cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 	public String getSource() {
@@ -99,6 +101,12 @@ public class DetailedFlightBean {
 	}
 	public void setFlightClass(String flightClass) {
 		this.flightClass = flightClass;
+	}
+	public int getNumberOfSeat() {
+		return numberOfSeat;
+	}
+	public void setNumberOfSeat(int numberOfSeat) {
+		this.numberOfSeat = numberOfSeat;
 	}
 	
 }
