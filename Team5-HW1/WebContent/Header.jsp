@@ -8,7 +8,7 @@
 	
 	<div class="col span_1_of_3">
 		<%
-		if(request.getSession(false).getAttribute("session_username") != null) {
+		if(request.getSession(false).getAttribute("userBean") != null) {
 		%>
 		<a href="Logout">Logout</a>
 		<%

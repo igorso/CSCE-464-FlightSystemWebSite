@@ -3,6 +3,7 @@ package ass1;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,9 +52,12 @@ public class TransactionConfirmation extends HttpServlet {
 		HttpSession session = request.getSession();
 		parameters = (DetailedFlightBean) session.getAttribute("selectedFlight");
 		
+		UserBean userBean = (UserBean) session.getAttribute("userBean");
+		int user_id=userBean.getId();
+		System.out.println("The user id is:"+ user_id);
 		//Have to get all the parameters:
 		try {
-			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, 5);
+			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, user_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
