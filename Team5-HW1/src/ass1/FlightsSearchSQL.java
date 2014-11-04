@@ -2,6 +2,7 @@ package ass1;
 import beans.*;
 
 import java.sql.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +20,20 @@ public class FlightsSearchSQL {
 		//We get the data from the bean parameter:
 		FlightsSearchSQL jdbc = new FlightsSearchSQL("cse.unl.edu", "cse464", "sheili", "]34Dr3");
 		
-		String date=parameters.getDateOfTravel();
+		//Format the date in a good way:
+		String Sdate=parameters.getDateOfTravel();
+		java.util.Date Ddate = null;
+		try {
+			Ddate = new SimpleDateFormat("MM/dd/yyyy").parse(Sdate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String date=df.format(Ddate) +" 00:00:00.0";;//"2015-01-01 10:28:00.0";
+		//System.out.println("The date is "+ date);
+		
+		//Get the other parameters:
 		String source=parameters.getSource();
 		String destination=parameters.getDestination();
 		String flightClass=parameters.getFlightClass();
@@ -28,7 +42,7 @@ public class FlightsSearchSQL {
 		ArrayList<Object> param =  new ArrayList<Object>();
 		param.add(source);
 		param.add(destination);
-		date="2015-01-01 10:28:00.0";
+		
 		param.add(Timestamp.valueOf(date));
 		Timestamp oneDayAfter=Timestamp.valueOf(date);
 		oneDayAfter.setTime(oneDayAfter.getTime()+24*3600*1000);
