@@ -30,27 +30,29 @@ public class ManagementPDF {
 	      Font.BOLD);
 	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
 	      Font.BOLD);
-	  private DetailedFlightBean details=null;
+	  
 
-	  /*
+	 
 	  public static void main(String[] args) {
 		  DetailedFlightBean detailsF=new DetailedFlightBean();
 		  UserBean user=new UserBean();
-		  //printPDF(detailsF,user);
+		  printPDF(detailsF,user,"C:\\Users\\stanislas\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Team5-HW1\\FirstPdf.pdf");
+		  
 	  }
-	  */
+	 
 	  
-	  public void printPDF(DetailedFlightBean details,UserBean user)
+	  public static void printPDF(DetailedFlightBean details,UserBean user,String path)
 	  {
-		  /*
+		 System.out.println("We create a PDF at this emplacement "+path);
 		  try {
 		      Document document = new Document();
-		      PdfWriter.getInstance(document, new FileOutputStream(FILE));
+		      PdfWriter.getInstance(document, new FileOutputStream( path));
 		      document.open();
 		      addMetaData(document);
 		      addTitlePage(document);
 		      createTable(document, details, user);
 		      document.close();
+		      
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    }
@@ -62,7 +64,7 @@ public class ManagementPDF {
 	    document.addTitle("Booking Summary");	  
 	    document.addAuthor("Flight website");
 	    document.addCreator("Flight website");
-	    */
+	   
 	  }
 
 	  private static void addTitlePage(Document document)

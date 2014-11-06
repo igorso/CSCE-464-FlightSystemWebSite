@@ -14,6 +14,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
 /*
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -67,29 +72,18 @@ public class PrinterPDF extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		System.out.println("Do post of printer");
 		//Get the data from the session:
-		
 		//HttpSession session = request.getSession();
 		DetailedFlightBean flightDetail = new DetailedFlightBean();//(DetailedFlightBean) session.getAttribute("selectedFlight");		
 		UserBean userBean = new UserBean();//(UserBean) session.getAttribute("userBean");
-		//ManagementPDF managementPDF= new ManagementPDF();
-		//printPDF(flightDetail, userBean);
+		
+		//Create the PDF with the beans:
 		String pdfFileName = "FirstPdf.pdf";
 		String contextPath = getServletContext().getRealPath(File.separator);
-		try {
-		      //com.itextpdf.text.Document document = new Document();
-		      //PdfWriter.getInstance(document, new FileOutputStream(contextPath + pdfFileName));
-		      //document.open();
-		      //addMetaData(document);
-		      //addTitlePage(document);
-		      //createTable(document, details, user);
-		      //document.close();
-		    } catch (Exception e) {
-		      e.printStackTrace();
-		    }
+		printPDF(flightDetail, userBean,contextPath + pdfFileName);
+		System.out.println("End of the PDF print");
 		
-		
-		
-		System.out.println(contextPath);
+		//Display it on the screen:
+		//System.out.println(contextPath);
 		File pdfFile = new File(contextPath + pdfFileName);
 
 		response.setContentType("application/pdf");
@@ -105,13 +99,16 @@ public class PrinterPDF extends HttpServlet {
 
 	}
 	
-	private void printPDF(DetailedFlightBean details,UserBean user)
+	void printPDF(DetailedFlightBean details,UserBean user,String path)
 	  {
-		String pdfFileName = "FirstPdf.pdf";
-		String contextPath = getServletContext().getRealPath(File.separator);
-		  try {
+		
+		System.out.println("We will create the pdf file with the bookinge We are in the servlet"+path);
+		ManagementPDF.printPDF(details, user,path);
+		/*
+		try {
 		      Document document = new Document();
 		      PdfWriter.getInstance(document, new FileOutputStream(contextPath + pdfFileName));
+		      System.out.println(contextPath + pdfFileName);
 		      document.open();
 		      //addMetaData(document);
 		      //addTitlePage(document);
@@ -119,7 +116,7 @@ public class PrinterPDF extends HttpServlet {
 		      document.close();
 		    } catch (Exception e) {
 		      e.printStackTrace();
-		    }
+		    }*/
 	  }
 	 
 	/*
