@@ -45,7 +45,8 @@
 					<div class="section group">
 						<div class="col span_1_of_2">
 							<%
-							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) request.getAttribute("bookings");
+							HttpSession sess = request.getSession();
+							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) sess.getAttribute("bookingSearch");
 							int nBookings = bookings.size();
 							%>
 							<div class="FlightTable" id="BookingsTableID">
