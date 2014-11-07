@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    pageEncoding="ISO-8859-1" import="beans.BookingBean, java.util.ArrayList"%>
 <html>
 <head>
-<link rel="stylesheet" href="./css/LabelField.css" type="text/css">
-<link rel="stylesheet" href="./css/TextBox.css" type="text/css" />
+<link rel="stylesheet" href="./css/FlightTable.css" type="text/css" />
 <link rel="stylesheet" href="./css/ClickButton.css" type="text/css" />
 
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
@@ -27,68 +25,72 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Registration</title>
-
-<script>
-	function validateForm() {
-		var x = document.forms["Register"]["user"].value;
-		if (x == null || x == "") {
-			alert("Email must be filled out");
-			return false;
-		}
-		if(!isEmailAddress(x)) {
-			alert("Email must be a valid email address");
-			return false;
-		}
-		var y = document.forms["Register"]["pwd"].value;
-		if (y == null || y == "") {
-			alert("Password must be filled out");
-			return false;
-		}
-		var z = document.forms["Register"]["pwd_confirm"].value;
-		if (z == null || z == "") {
-			alert("Please confirm your password");
-			return false;
-		}
-
-		if (y != z) {
-			alert("The passwords don't match");
-			return false;
-		}
-	}
-	
-	function isEmailAddress(str) {
-		var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-	    return str.match(pattern);    
-
-	}
-</script>
+<title>Booking history</title>
 </head>
 <body>
-	
-	<header>
-		<p class="introtext">Welcome to the registration page!</p>
-		<H5>Please fill out the form. Attention to input a valid email.</H5>
-	</header>
-	
-	<div class="section group">
-		<div class="col span_1_of_3">
+
+	<jsp:include page="Header.jsp"></jsp:include>
+
+	<div id="wrapper">
+		<div id="headcontainer">
+			<header>
+			<p class="introtext">Yours Booking history.</p>
+			</header>
+
 		</div>
-		
-		<div class="col span_1_of_3">
-			<form name="Register" action="Registration" method="post"
-				onsubmit="return validateForm()">
-				<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user"></p>
-				<p><label class="field">Password:</label> <input class="TextBox" type="password" name="pwd"> </p>
-				<p><label class="field">Confirm:</label> <input class="TextBox"	type="password" name="pwd_confirm"> </p>
-				<p><input class="ClickButton" type="submit" value="Registration"></p>
-			</form>
-			<a href="/Team5-HW1/Login.jsp">Back to login page</a>
+		<div id="maincontentcontainer">
+			<div class="standardcontainer" id="example">
+				<div class="maincontent">
+
+					<div class="section group">
+						<div class="col span_1_of_2">
+							<%
+							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) request.getAttribute("bookings");
+							int nBookings = bookings.size();
+							%>
+							<div class="BookingsTable" id="BookingsTableID">
+								<table>
+									<thead>
+										<tr>
+											<td><label>Booking ID</label></td>
+											<td><label>Date of booking</label></td>
+											<td><label>Flight</label></td>
+											<td><label>Number of seats</label></td>
+											<td><label>Account ID</label></td>
+											<td><label>Cost</label></td>
+										</tr>
+									</thead>
+									<tbody>
+										<%
+										for (int i = 0; i < nBookings; ++i) {
+											BookingBean booking = bookings.get(i);
+										%>
+										<tr>
+											<td><label><%=booking.getBookingId()%></label></td>
+											<td><label><%=booking.getDateOfBooking()%></label></td>
+											<td><label><%=booking.getFlightId()%></label></td>
+											<td><label><%=booking.getNumberOfSeats()%></label></td>
+											<td><label><%=booking.getAccountId()%></label></td>
+											<td><label><%=booking.getTotalCost()%></label>
+										</tr>
+										<%
+										}
+										%>
+								</table>
+							</div>		
+						</div>
+						
+						<div class="col span_1_of_2">
+							<form action="./FlightSearch.jsp">
+								<input class="ClickButton" type="submit" value="Home">
+							</form>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
 		</div>
-		
-		<div class="col span_1_of_3">
-		</div>
-		
 	</div>
 	
 	<!-- JavaScript at the bottom for fast page loading -->
