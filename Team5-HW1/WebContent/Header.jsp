@@ -15,6 +15,9 @@
 			<a href="Logout">Logout</a>
 		<%
 		}
+		else {
+			response.sendRedirect("Login.jsp");
+		}
 		%>
 	</div>
 

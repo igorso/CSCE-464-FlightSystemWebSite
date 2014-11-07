@@ -57,7 +57,7 @@ public class TransactionConfirmation extends HttpServlet {
 		
 		//Have to get all the parameters:
 		try {
-			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, 5);
+			error=AccountSQL.transaction_successfull(parameters, account_id, holder_id, routing_number, user_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -45,10 +45,12 @@
 					<div class="section group">
 						<div class="col span_1_of_2">
 							<%
-							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) request.getAttribute("bookings");
+							HttpSession sess = request.getSession();
+							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) sess.getAttribute("bookingSearch");
 							int nBookings = bookings.size();
+							System.out.println(nBookings);
 							%>
-							<div class="BookingsTable" id="BookingsTableID">
+							<div class="FlightTable" id="BookingsTableID">
 								<table>
 									<thead>
 										<tr>
@@ -66,9 +68,9 @@
 											BookingBean booking = bookings.get(i);
 										%>
 										<tr>
-											<td><label><%=booking.getBookingId()%></label></td>
+											<td><label><%=booking.getId()%></label></td>
 											<td><label><%=booking.getDateOfBooking()%></label></td>
-											<td><label><%=booking.getFlightId()%></label></td>
+											<td><label><%=booking.getFlightIds()%></label></td>
 											<td><label><%=booking.getNumberOfSeats()%></label></td>
 											<td><label><%=booking.getAccountId()%></label></td>
 											<td><label><%=booking.getTotalCost()%></label>

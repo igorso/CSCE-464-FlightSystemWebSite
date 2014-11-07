@@ -16,14 +16,14 @@ import beans.DetailedFlightBean;
 import beans.FlightSearchBean;
 import beans.UserBean;
 
-public class BookingResult extends HttpServlet {
+public class BookingHistory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * We do not use the constructor
      * @see HttpServlet#HttpServlet()
      */
-    public BookingResult() {
+    public BookingHistory() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,6 +34,7 @@ public class BookingResult extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -61,12 +62,9 @@ public class BookingResult extends HttpServlet {
 		session.setAttribute("bookingSearch", listBooking);
 
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewAndBook.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("BookingHistory.jsp");
 		dispatcher.forward(request, response);
 	}
 	
-	protected void populateDetailedFlightBean(HttpServletRequest request) {
-	}
 	
-
 }
