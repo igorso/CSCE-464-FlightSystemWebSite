@@ -23,12 +23,10 @@ import beans.*;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ManagementPDF.
+ * This class works perfectly when it is launched as a classic java application, but creates an exception when it is loaded by tomcat servlet
  */
 public class ManagementPDF {
 	
-	/** The file. */
-	private static String FILE = "C:\\Users\\stanislas\\Desktop\\FirstPdf.pdf";
-	  
   	/** The cat font. */
   	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
 	      Font.BOLD);

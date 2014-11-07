@@ -98,6 +98,6 @@ public class PrinterPDF extends HttpServlet {
 	void createPDF(DetailedFlightBean details,UserBean user,String path)
 	  {
 		System.out.println("We will create the pdf file with the bookinge We are in the servlet"+path);
-		ManagementPDF.createPDF(details, user,path); //This is where it does not work! Error 500
+		//ManagementPDF.createPDF(details, user,path); //This is where it does not work! Error 500
 	  }
 }

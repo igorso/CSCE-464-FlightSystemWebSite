@@ -88,7 +88,7 @@
 		
 							<div class="col span_1_of_3">
 								<p>Show fields to passenger fulfill with their information</p>
-
+								<a id="myLink" href="./PrinterPDF" target="_blank">Print PDF</a>
 								<form action="./FlightSearch.jsp">
 									<input class="ClickButton" type="submit" value="Home">
 								</form>
