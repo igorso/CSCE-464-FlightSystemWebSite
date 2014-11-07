@@ -48,7 +48,7 @@
 							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) request.getAttribute("bookings");
 							int nBookings = bookings.size();
 							%>
-							<div class="BookingsTable" id="BookingsTableID">
+							<div class="FlightTable" id="BookingsTableID">
 								<table>
 									<thead>
 										<tr>

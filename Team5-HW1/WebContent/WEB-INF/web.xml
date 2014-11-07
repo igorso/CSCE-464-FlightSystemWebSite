@@ -89,4 +89,14 @@
     <servlet-name>PrinterPDF</servlet-name>
     <url-pattern>/PrinterPDF</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookingHistory</display-name>
+    <servlet-name>BookingHistory</servlet-name>
+    <servlet-class>ass1.BookingHistory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookingHistory</servlet-name>
+    <url-pattern>/BookingHistory</url-pattern>
+  </servlet-mapping>
 </web-app>

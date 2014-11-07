@@ -63,19 +63,6 @@
 	}
 </script>
 
-<script>
-$(document).ready(function(){
-
-    $("input.datepicker").click(function(){
-
-    	//alert( "Handler for .click() called." );
-        $('.datepicker').pickadate();  
-
-    });
-}); //this was missing
-</script> 
-
-
 </head>
 
 <jsp:useBean id="flightBean" class="beans.FlightSearchBean"
