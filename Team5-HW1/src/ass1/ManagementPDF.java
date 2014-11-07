@@ -31,7 +31,7 @@ public class ManagementPDF {
 	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
 	      Font.BOLD);
 	  
-
+/*
 	 
 	  public static void main(String[] args) {
 		  DetailedFlightBean detailsF=new DetailedFlightBean();
@@ -40,7 +40,7 @@ public class ManagementPDF {
 		  
 	  }
 	 
-	  
+	  */
 	  public static void printPDF(DetailedFlightBean details,UserBean user,String path)
 	  {
 		 System.out.println("We create a PDF at this emplacement "+path);

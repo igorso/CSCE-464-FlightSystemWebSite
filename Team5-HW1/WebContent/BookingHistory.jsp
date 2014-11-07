@@ -66,9 +66,9 @@
 											BookingBean booking = bookings.get(i);
 										%>
 										<tr>
-											<td><label><%=booking.getBookingId()%></label></td>
+											<td><label><%=booking.getId()%></label></td>
 											<td><label><%=booking.getDateOfBooking()%></label></td>
-											<td><label><%=booking.getFlightId()%></label></td>
+											<td><label><%=booking.getFlightIds()%></label></td>
 											<td><label><%=booking.getNumberOfSeats()%></label></td>
 											<td><label><%=booking.getAccountId()%></label></td>
 											<td><label><%=booking.getTotalCost()%></label>
