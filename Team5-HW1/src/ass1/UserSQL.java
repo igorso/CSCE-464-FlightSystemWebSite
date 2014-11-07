@@ -3,20 +3,34 @@ package ass1;
 import java.sql.*;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserSQL.
+ */
 public class UserSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new user sql.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public UserSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
 	/**
 	 * This class loads the MySQL Driver and Connects to the entered database.
-	 * @param host Host computer ("cse.unl.edu")
-	 * @param db
-	 * @param user
-	 * @param password 
+	 *
+	 * @param email the email (this has to be unique in the database)
+	 * @param password the password
 	 * @return A live connection or null
+	 * @throws SQLException the SQL exception
 	 */
 	
 	
@@ -45,6 +59,15 @@ public class UserSQL {
 		return(true);
 		}
 	}
+	
+	
+	/**
+	 * User_exists.
+	 *
+	 * @param email the email
+	 * @return true, if successful
+	 * @throws SQLException the SQL exception
+	 */
 	public static boolean user_exists(String email) throws SQLException
 	{
 		UserSQL jdbc = new UserSQL("cse.unl.edu", "sheili", "sheili", "]34Dr3");
@@ -87,6 +110,14 @@ public class UserSQL {
 		
 	}
 	
+	/**
+	 * Login_successfull.
+	 *
+	 * @param email the email
+	 * @param password the password
+	 * @return 1 if the login is successfull, 0 else 
+	 * @throws SQLException the SQL exception
+	 */
 	public static int login_successfull(String email, String password) throws SQLException
 	{
 		//Test login
@@ -125,6 +156,14 @@ public class UserSQL {
 		}
 	}
 	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -157,6 +196,14 @@ public class UserSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -189,6 +236,15 @@ public class UserSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;
