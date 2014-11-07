@@ -16,11 +16,17 @@ import beans.DetailedFlightBean;
 import beans.FlightSearchBean;
 import beans.UserBean;
 
+/**
+ * The Class BookingHistory is a servlet getting the booking history of a user.
+ */
 public class BookingHistory extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public BookingHistory() {
@@ -29,7 +35,12 @@ public class BookingHistory extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * doGet call doPost.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,6 +49,12 @@ public class BookingHistory extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Query the database for the Flight Number that was given by the FlightResults.jsp

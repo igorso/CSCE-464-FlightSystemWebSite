@@ -8,13 +8,33 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * The Class BookingSearchSQL. search for the previous booking of a user
+ */
 public class BookingSearchSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new booking search sql.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public BookingSearchSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
+	/**
+	 * Look the bookings of a specific user.
+	 *
+	 * @param userData the user data
+	 * @return a list of booking in an array list
+	 * @throws SQLException the SQL exception
+	 */
 	public static ArrayList<BookingBean> lookBooking(UserBean userData) throws SQLException{
 		
 		//We get the data from the bean parameter:
@@ -61,6 +81,14 @@ public class BookingSearchSQL {
 	}
 	
 	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -93,6 +121,14 @@ public class BookingSearchSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -125,6 +161,15 @@ public class BookingSearchSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;

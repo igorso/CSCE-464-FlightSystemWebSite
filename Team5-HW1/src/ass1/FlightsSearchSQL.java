@@ -8,13 +8,34 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * The Class FlightsSearchSQL. Search for flights in the database
+ */
 public class FlightsSearchSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new flights search sql.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public FlightsSearchSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
+	/**
+	 * Look flights.
+	 *This function looks for flights corresponding to the parameters in the database.
+	 *It looks only for flights without stop.
+	 * @param parameters the parameters given by the user and stored in the bean
+	 * @return the array list
+	 * @throws SQLException the SQL exception
+	 */
 	public static ArrayList<FlightResultBean> lookFlights(FlightSearchBean parameters) throws SQLException{
 		
 		//We get the data from the bean parameter:
@@ -151,6 +172,14 @@ public class FlightsSearchSQL {
 	}
 	
 	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -183,6 +212,14 @@ public class FlightsSearchSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -215,6 +252,15 @@ public class FlightsSearchSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;

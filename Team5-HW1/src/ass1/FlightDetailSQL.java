@@ -7,13 +7,34 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+/**
+ * The Class FlightDetailSQL queries the database for more detail of a flight.
+ */
 public class FlightDetailSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new flight detail sql.
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public FlightDetailSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
+	/**
+	 * Gets the detail.
+	 *
+	 * @param parameters the FlightSearchBean containing the search parameters
+	 * @param id the id
+	 * @param cost the cost
+	 * @return the detailed information of a flight
+	 * @throws SQLException the SQL exception
+	 */
 	public static DetailedFlightBean getDetail(FlightSearchBean parameters, int id, int cost) throws SQLException{
 		
 		//We get the data from the bean parameter:
@@ -76,6 +97,14 @@ public class FlightDetailSQL {
 	}
 	
 	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -108,6 +137,14 @@ public class FlightDetailSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -140,6 +177,15 @@ public class FlightDetailSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;

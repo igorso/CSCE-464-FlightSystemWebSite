@@ -5,20 +5,36 @@ import java.util.ArrayList;
 
 import beans.*;
 
+/**
+ * The Class AccountSQL. Queries and update the database for the final transaction
+ */
 public class AccountSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new account sql.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public AccountSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
 	
 	/**
 	 * This class loads the MySQL Driver and Connects to the entered database.
-	 * @param host Host computer ("cse.unl.edu")
-	 * @param db
-	 * @param user
-	 * @param password 
-	 * @return A live connection or null
+	 *	This class make the final transaction, try to make the payement, if it worked update the booking table, if it didn't return an error
+	 * @param parameters the Bean containing the flight information
+	 * @param account_id the account_id
+	 * @param holder_id the holder_id
+	 * @param routing_number the routing_number
+	 * @param user_id the user_id
+	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem 
+	 * @throws SQLException the SQL exception
 	 */
 	
 	
@@ -92,6 +108,17 @@ public class AccountSQL {
 			return(payementError);
 		}
 	}
+	
+	/**
+	 * Payement.
+	 *	This function look in the database if the account given has enough money and if yes make the payment.
+	 * @param id the account id
+	 * @param holder_id the holder_id
+	 * @param routing_number the routing_number
+	 * @param cost the cost which will be deducted of the balance
+	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem 
+	 * @throws SQLException the SQL exception
+	 */
 	public static int Payement(int id, int holder_id, int routing_number, int cost) throws SQLException
 	{
 		//Return 0 if everything was OK
@@ -157,6 +184,14 @@ public class AccountSQL {
 		
 	}
 	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -189,6 +224,14 @@ public class AccountSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the type of the 
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -221,6 +264,15 @@ public class AccountSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;

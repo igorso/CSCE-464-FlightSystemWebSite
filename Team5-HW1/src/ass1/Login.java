@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Get the parameters: Username and password
-	 * 2) Ask User.java if they correspond registered user.
+	 * 2) Ask UserSQL.java if they correspond registered user.
 	 * 3) If the login is successfull, go to LoginSuccess.jsp   else go to Register.jsp
 	 * @see User.java
 	 */

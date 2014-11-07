@@ -18,10 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 
  
 public class Registration extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use constructor
+     * We do not use constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public Registration() {
@@ -30,7 +33,12 @@ public class Registration extends HttpServlet {
     }
 
 	/**
-	 * Nothing done here
+	 * Nothing done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,6 +46,12 @@ public class Registration extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Get the parameters: Username and password

@@ -35,6 +35,12 @@ public class FlightSearch extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Fill the FlightSearchBean to maintain initial flight query through session
@@ -45,7 +51,7 @@ public class FlightSearch extends HttpServlet {
 		 
 		FlightSearchBean flightBean;
 		if(request.getParameter("backToFlightResults") == null) {
-			flightBean = populateFlightBean(request);
+			flightBean = new FlightSearchBean();
 		}
 		else {
 			HttpSession session = request.getSession();
@@ -71,39 +77,5 @@ public class FlightSearch extends HttpServlet {
 		//Dispatch results to view JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("FlightResults.jsp");
 		dispatcher.forward(request, response);
-	}
-	
-	protected FlightSearchBean populateFlightBean(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		FlightSearchBean flightBean = new FlightSearchBean();
-		session.setAttribute("flightBean", flightBean);
-		
-		String source = (String) request.getParameter("source");
-		if((source != null) && (!source.trim().equals("")))
-			flightBean.setSource(source);
-		
-		String destination = (String) request.getParameter("destination");
-		if((destination != null) && (!destination.trim().equals("")))
-			flightBean.setDestination(destination);
-		
-		String dateOfTravel = (String) request.getParameter("date");
-		if((dateOfTravel != null) && (!dateOfTravel.trim().equals("")))
-			flightBean.setDateOfTravel(dateOfTravel);
-		
-		String numberOfSeats = (String) request.getParameter("nSeats");
-		if((numberOfSeats != null) && (!numberOfSeats.trim().equals("")))
-			flightBean.setNumberOfSeats(Integer.parseInt(numberOfSeats));
-		
-		String flightClass = (String) request.getParameter("flightClass");
-		if((flightClass != null) && (!flightClass.trim().equals("")))
-			flightBean.setFlightClass(flightClass);
-		
-		return flightBean;
-	}
-	
-	// This method should use the flightBean to query db
-	protected ArrayList<FlightResultBean> queryDataBase(FlightSearchBean flightBean) {
-		RandomFlights flightGenerator = new RandomFlights(flightBean, 7);
-		return flightGenerator.getFlights();
 	}
 }

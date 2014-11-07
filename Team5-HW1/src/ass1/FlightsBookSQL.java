@@ -6,12 +6,34 @@ import beans.*;
 
 import beans.FlightSearchBean;
 
+/**
+ * The Class FlightsBookSQL looks if there is enough seat left in the flight
+ */
 public class FlightsBookSQL {
+	
+	/** The conn. */
 	public Connection conn;
 
+	/**
+	 * Instantiates a new flights book sql.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 */
 	public FlightsBookSQL(String host, String db, String user, String password){
 		this.conn = this.initiateConnection(host, db, user, password);
 	}
+	
+	/**
+	 * Seats available.
+	 *
+	 * @param parameters the details of the flight
+	 * @param numberSeats the number seats
+	 * @return true, if there is enough seats
+	 * @throws SQLException the SQL exception
+	 */
 	public static boolean SeatsAvailable(DetailedFlightBean parameters,  int numberSeats) throws SQLException{
 		FlightsBookSQL jdbc = new FlightsBookSQL("cse.unl.edu", "cse464", "sheili", "]34Dr3");
 		
@@ -101,6 +123,15 @@ public class FlightsBookSQL {
 				
 	
 	}
+	
+	/**
+	 * Query db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the result set
+	 */
 	public <T> ResultSet queryDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -133,6 +164,14 @@ public class FlightsBookSQL {
 		return rs;
 	}
 	
+	/**
+	 * Update db.
+	 *
+	 * @param <T> the generic type
+	 * @param query the query
+	 * @param sqlParam the sql param
+	 * @return the int
+	 */
 	public <T> int updateDB(String query, ArrayList<T> sqlParam){
 		PreparedStatement ps = null;
 		int rs = 0;
@@ -165,6 +204,15 @@ public class FlightsBookSQL {
 		return rs;
 	}
 	
+	/**
+	 * Initiate connection.
+	 *
+	 * @param host the host
+	 * @param db the db
+	 * @param user the user
+	 * @param password the password
+	 * @return the connection
+	 */
 	public Connection initiateConnection(String host, String db, String user, String password){
 
 		Connection dbConnection = null;

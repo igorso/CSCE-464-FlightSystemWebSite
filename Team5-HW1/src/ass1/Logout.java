@@ -34,8 +34,13 @@ public class Logout extends HttpServlet {
 	}
 
 	/**
+	 * Invalidate the session and redirects to the login page
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * @see User.java
+	 * @see UserSQL.java
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);

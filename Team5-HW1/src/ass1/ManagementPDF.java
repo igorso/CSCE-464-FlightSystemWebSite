@@ -20,28 +20,55 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import beans.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManagementPDF.
+ */
 public class ManagementPDF {
+	
+	/** The file. */
 	private static String FILE = "C:\\Users\\stanislas\\Desktop\\FirstPdf.pdf";
-	  private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-	      Font.BOLD);
-	  private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-	      Font.NORMAL, BaseColor.RED);
-	  private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
-	      Font.BOLD);
-	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+	  
+  	/** The cat font. */
+  	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
 	      Font.BOLD);
 	  
-/*
+  	/** The red font. */
+  	private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+	      Font.NORMAL, BaseColor.RED);
+	  
+  	/** The sub font. */
+  	private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
+	      Font.BOLD);
+	  
+  	/** The small bold. */
+  	private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+	      Font.BOLD);
+	  
+	  
 	 
-	  public static void main(String[] args) {
+	  /**
+  	 * The main method.
+  	 * Used only for testing.
+  	 *
+  	 * @param args the arguments
+  	 */
+  	public static void main(String[] args) {
 		  DetailedFlightBean detailsF=new DetailedFlightBean();
 		  UserBean user=new UserBean();
-		  printPDF(detailsF,user,"C:\\Users\\stanislas\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Team5-HW1\\FirstPdf.pdf");
+		  createPDF(detailsF,user,"C:\\Users\\stanislas\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Team5-HW1\\FirstPdf.pdf");
 		  
 	  }
 	 
-	  */
-	  public static void printPDF(DetailedFlightBean details,UserBean user,String path)
+	  
+	  /**
+  	 * Prints the pdf using the beans informations.
+  	 * This function does not work when it is called by a servlet! (We don't know why)
+  	 * @param details the details
+  	 * @param user the user
+  	 * @param path the path
+  	 */
+  	public static void createPDF(DetailedFlightBean details,UserBean user,String path)
 	  {
 		 System.out.println("We create a PDF at this emplacement "+path);
 		  try {
@@ -57,17 +84,29 @@ public class ManagementPDF {
 		      e.printStackTrace();
 		    }
 	  }
-	  // iText allows to add metadata to the PDF which can be viewed in your Adobe
-	  // Reader
-	  // under File -> Properties
-	  private static void addMetaData(Document document) {
+	  
+	
+	 /**
+	 * Adds the meta data.
+	 *iText allows to add metadata to the PDF which can be viewed in Adobe
+	 *Reader
+	 * under File -> Properties
+	 * @param document the document
+	 */
+  	private static void addMetaData(Document document) {
 	    document.addTitle("Booking Summary");	  
 	    document.addAuthor("Flight website");
 	    document.addCreator("Flight website");
 	   
 	  }
 
-	  private static void addTitlePage(Document document)
+	  /**
+  	 * Adds the title page.
+  	 *
+  	 * @param document the document
+  	 * @throws DocumentException the document exception
+  	 */
+  	private static void addTitlePage(Document document)
 	      throws DocumentException {
 	    Paragraph preface = new Paragraph();
 	    // We add one empty line
@@ -84,7 +123,15 @@ public class ManagementPDF {
 	  }
 
 
-	  private static void createTable(Document subCatPart, DetailedFlightBean details,UserBean user)
+	  /**
+  	 * Creates the table.
+  	 *
+  	 * @param subCatPart the sub cat part
+  	 * @param details the details
+  	 * @param user the user
+  	 * @throws BadElementException the bad element exception
+  	 */
+  	private static void createTable(Document subCatPart, DetailedFlightBean details,UserBean user)
 	      throws BadElementException {
 	    PdfPTable table = new PdfPTable(2);
 
@@ -144,7 +191,13 @@ public class ManagementPDF {
 	  }
 
 	 
-	  private static void addEmptyLine(Paragraph paragraph, int number) {
+	  /**
+  	 * Adds the empty line.
+  	 *
+  	 * @param paragraph the paragraph
+  	 * @param number the number
+  	 */
+  	private static void addEmptyLine(Paragraph paragraph, int number) {
 	    for (int i = 0; i < number; i++) {
 	      paragraph.add(new Paragraph(" "));
 	    }
