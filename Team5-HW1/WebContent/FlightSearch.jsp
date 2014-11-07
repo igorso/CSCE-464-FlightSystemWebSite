@@ -3,65 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="./css/TextBox.css" type="text/css" />
-<link rel="stylesheet" href="./css/ClickButton.css" type="text/css" />
-<link rel="stylesheet" href="./css/LabelField.css" type="text/css">
 
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta http-equiv="cleartype" content="on">
+	<jsp:include page="CssAndExternalLibrary.jsp"></jsp:include>
 
-	<link rel="stylesheet" href="./responsivegridsystem/css/html5reset.css" media="all">
-	<link rel="stylesheet" href="./responsivegridsystem/css/responsivegridsystem.css" media="all">
-	<link rel="stylesheet" href="./responsivegridsystem/css/col.css" media="all">
-	<link rel="stylesheet" href="./responsivegridsystem/css/2cols.css" media="all">
-	<link rel="stylesheet" href="./responsivegridsystem/css/3cols.css" media="all">
-	
-	<link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="./responsivegridsystem/css/1024.css">
-	<link rel="stylesheet" media="only screen and (max-width: 768px) and (min-width: 481px)" href="./responsivegridsystem/css/768.css">
-	<link rel="stylesheet" media="only screen and (max-width: 480px)" href="./responsivegridsystem/css/480.css">
-	
-	<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements and feature detects -->
-	<script src="./responsivegridsystem/js/modernizr-2.5.3-min.js"></script>
-
-
-<link rel="stylesheet" href="./pickdateLib/themes/default.css" id="theme_base">
-<link rel="stylesheet" href="./pickdateLib/themes/default.date.css" id="theme_date">
-<link rel="stylesheet" href="./pickdateLib/themes/default.time.css" id="theme_time">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="./pickdateLib/picker.js"></script>
-<script src="./pickdateLib/picker.date.js"></script>
-<script src="./pickdateLib/picker.time.js"></script>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Flight search</title>
-<script>
-	function validateForm() {
-		var x = document.forms["flightSearch"]["source"].value;
-		if (x == null || x == "") {
-			alert("Source must be filled out");
-			return false;
-		}
-		var y = document.forms["flightSearch"]["destination"].value;
-		if (y == null || y == "") {
-			alert("Destination must be filled out");
-			return false;
-		}
-		var y = document.forms["flightSearch"]["date"].value;
-		if (y == null || y == "") {
-			alert("Date must be filled out");
-			return false;
-		}
-		var y = document.forms["flightSearch"]["nSeats"].value;
-		if (y == null || y == "") {
-			alert("The number of seats must be filled out");
-			return false;
-		}
-	}
-</script>
 
 </head>
 
@@ -126,18 +71,32 @@
 		</div>
 	</div>
 
-	<!-- JavaScript at the bottom for fast page loading -->
+	<script>
+		function validateForm() {
+			var x = document.forms["flightSearch"]["source"].value;
+			if (x == null || x == "") {
+				alert("Source must be filled out");
+				return false;
+			}
+			var y = document.forms["flightSearch"]["destination"].value;
+			if (y == null || y == "") {
+				alert("Destination must be filled out");
+				return false;
+			}
+			var y = document.forms["flightSearch"]["date"].value;
+			if (y == null || y == "") {
+				alert("Date must be filled out");
+				return false;
+			}
+			var y = document.forms["flightSearch"]["nSeats"].value;
+			if (y == null || y == "") {
+				alert("The number of seats must be filled out");
+				return false;
+			}
+		}
+	</script>
 
-	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="./responsivegridsystem/js/jquery-1.7.2.min.js"><\/script>')</script>
-
-	<!--[if (lt IE 9) & (!IEMobile)]>
-	<script src="js/selectivizr-min.js"></script>
-	<![endif]-->
-
-	<!-- More Scripts-->
-	<script src="./responsivegridsystem/js/responsivegridsystem.js"></script>
+	<jsp:include page="ExternalLibraryScript.jsp"></jsp:include>
 
 </body>
 
