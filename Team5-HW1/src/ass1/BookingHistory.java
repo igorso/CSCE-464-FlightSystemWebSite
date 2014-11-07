@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.BookingBean;
-import beans.DetailedFlightBean;
-import beans.FlightSearchBean;
 import beans.UserBean;
 
 /**
@@ -76,7 +74,7 @@ public class BookingHistory extends HttpServlet {
 			e.printStackTrace();
 		}
 		// Using scope="session" because the flight details will be used till confirmation of transaction
-		session.setAttribute("bookingSearch", listBooking);
+		request.setAttribute("bookingSearch", listBooking);
 
 		//Dispatch results to view JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("BookingHistory.jsp");
