@@ -32,7 +32,6 @@ public class UpdateShoppingCart extends HttpServlet {
 		System.out.println("Updating Shopping Cart");
 		//Get the data:
 		DetailedFlightBean toAdd= null;
-		DetailedFlightBean empty= new DetailedFlightBean();
 		ArrayList<DetailedFlightBean> shoppingCart =  null;
 		String numberSeats = request.getParameter("numberSeats");
 		HttpSession session = request.getSession();
