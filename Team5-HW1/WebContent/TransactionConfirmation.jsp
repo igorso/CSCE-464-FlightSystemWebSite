@@ -5,7 +5,14 @@
 <head>
 
 	<jsp:include page="CssAndExternalLibrary.jsp"></jsp:include>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+function printTicket()
+{  
+	window.print();
+}
+</script>
 <title>Transaction confirm</title>
 </head>
 <body>
@@ -39,10 +46,15 @@
 							</div>
 		
 							<div class="col span_1_of_3">
-								<p>Show fields to passenger fulfill with their information</p>
-								<a id="myLink" href="./PrinterPDF" target="_blank">Print PDF</a>
+								<form name="flightSearch" method="post" action="FlightSearch">				
+									<p><label class="field">Name:</label> <input class="TextBox" type="text" name="name"></p>
+									<p><label class="field">Sex:</label> <input class="TextBox" type="text" name="Sex"></p>
+									<p><label class="field">Age:</label> <input class="TextBox" type="text" name="Age"></p>	
+								</form>
+								<a id="myLink" href="./PrinterPDF" target="_blank">Print PDF (does not work)</a>
 								<form action="./FlightSearch.jsp">
-									<input class="ClickButton" type="submit" value="Home">
+									<button onclick="printTicket()">Print tickets</button>
+
 								</form>
 										
 							</div>

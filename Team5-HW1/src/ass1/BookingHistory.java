@@ -74,7 +74,8 @@ public class BookingHistory extends HttpServlet {
 			e.printStackTrace();
 		}
 		// Using scope="session" because the flight details will be used till confirmation of transaction
-		request.setAttribute("bookingSearch", listBooking);
+		session.setAttribute("bookingSearch", listBooking);
+		System.out.println(listBooking.size());
 
 		//Dispatch results to view JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("BookingHistory.jsp");

@@ -40,7 +40,7 @@ public class Bank extends HttpServlet {
 		// transaction status (Success/Failure)
 		
 		//get the datas:
-		int error=0;
+		int payementError=0;
 		
 		//To do look for null value here
 		int account_id=Integer.parseInt((String) request.getParameter("accountId"));
@@ -55,7 +55,7 @@ public class Bank extends HttpServlet {
 			totalSCcost+=flight.getTotalCost();
 		}
 		
-		int payementError=3;
+
 		//Query the database to make the payment:
 		try {
 			payementError=AccountSQL.Payement(account_id,holder_id, routing_number,totalSCcost);
@@ -76,13 +76,19 @@ public class Bank extends HttpServlet {
 		case 2: errorMessage = "The account's balance was not enough to complete the transaction."; break;
 		case 3: errorMessage = "There was a problem with your Bank DataBase. Your transaction failed."; break;
 		}
-		
-		if(error == 0)
+		PrintWriter out = response.getWriter(); 
+		if(payementError == 0)
+		{
 			request.setAttribute("transaction", new Boolean(true));
+			out.println( "Work#The bank accepted the payment" );
+		}
 		else {
+			out.println( "NotWork#"+  errorMessage);
 			request.setAttribute("transaction", new Boolean(false));
 			request.setAttribute("errorMessage", errorMessage);
 		}
+		
+		
 	}
 
 	/**

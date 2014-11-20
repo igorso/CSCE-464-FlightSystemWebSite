@@ -14,12 +14,27 @@ function askBank()
 	var accountId = $("#accountId").val();
 	var holderId = $("#holderId").val();
 	var routing = $("#routing").val();
-	alert("We will ask the bank")
-    $.get("Bank", {accountId:accountId,holderId:holderId,routing:routing}, function(data,status){
-    	alert("Bank finished to work");
-    	//$("#results").html("Added to the shopping cart");
-    	//$("#add").hide();// We hide the button so the user can not add several times the same flight.
-		});  
+	//alert("We will ask the bank")
+    $.get("Bank", {accountId:accountId,holderId:holderId,routing:routing}, function(data,status,xhr){
+    	//alert("Bank finished to work");
+    	//alert(data);
+    	 var response = data.split('#');
+    	//alert(response[0]);
+    	alert(response[1]);
+
+    	$("#bResults").html(response[1]);
+    	if(response[0]=="Work")
+    	{
+    		//alert("It worked");
+    	
+    		$("#payement").hide();
+    		$("#finish").show();
+    		$("#hiddenAccount").html("<input  type=\"hidden\" name=\"accountID\"  value="+ accountId+" >");
+    	}else
+ 		{
+    		//alert("It didnt work");
+ 		}
+		},"text");  
 }
 </script>
 <title>Booking Confirm</title>
@@ -50,22 +65,22 @@ function askBank()
 							</div>
 						</div>
 	
-						<div class="col span_1_of_3">
-							<form action="./TransactionConfirmation" name="bankInfo" method="post" onsubmit="return validateForm()">
+						<div class="col span_1_of_3" >
+							<form action="./TransactionConfirmation" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>
 								<input class="ClickButton"  type="button" value="Pay" onClick="askBank()">
 							</form>
 							<form action="./UpdateBooking">
-							TO DO HIDE THIS until the bank confirm (and replace by a form...)
-							What to do if the bank does not confirm?
-								<input class="ClickButton" type="submit" value="Finish" align="right">
+							<p id="bResults"></p>
+							<p id="hiddenAccount"></p>
+									<input class="ClickButton" type="submit" value="Finish" align="right" style="display: none;" id="finish">
 							</form>		
 							
 							
 							<form action="./ShoppingCart.jsp">
-								<input class="ClickButton" type="submit" value="Cancel" align="right">
+								<input class="ClickButton" type="submit" value="Back to shopping cart" align="right">
 							</form>		
 						</div>
 	

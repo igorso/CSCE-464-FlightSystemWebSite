@@ -30,12 +30,15 @@ public class UpdateBooking extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Get the parameters:
-		String account_idS = request.getParameter("account_id");//TO DO PASS IT IN THE REQUEST ZND VERIFY NULL
-		int account_id=5; //TO DO parseint();
+		String account_idS = request.getParameter("accountID");
+		
+		int account_id=Integer.parseInt(account_idS); 
+		System.out.println("Account Id"+ account_id);
 		ArrayList<DetailedFlightBean> shoppingCart =  null;
 		HttpSession session = request.getSession();
 		if(session.getAttribute("shoppingCart") == null) {
@@ -52,7 +55,8 @@ public class UpdateBooking extends HttpServlet {
 		//update the database:
 		int error=0;
 		try {
-			error=AccountSQL.updateDB(shoppingCart, account_id,  user_id);
+
+			error=AccountSQL.updateDB(shoppingCart,   user_id,account_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,14 +74,19 @@ public class UpdateBooking extends HttpServlet {
 		}
 		
 		if(error == 0)
+		{
 			request.setAttribute("transaction", new Boolean(true));
+			
+		}
 		else {
 			request.setAttribute("transaction", new Boolean(false));
 			request.setAttribute("errorMessage", errorMessage);
 		}
+
 		//Dispatch results to view JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("TransactionConfirmation.jsp");
 		dispatcher.forward(request, response);
+		
 	}
 
 	/**

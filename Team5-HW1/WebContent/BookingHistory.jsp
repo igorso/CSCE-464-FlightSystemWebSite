@@ -27,6 +27,7 @@
 							<%
 							HttpSession sess = request.getSession();
 							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) sess.getAttribute("bookingSearch");
+							//bookings=new ArrayList<BookingBean>();
 							int nBookings = bookings.size();
 							%>
 							<div class="FlightTable" id="BookingsTableID">
