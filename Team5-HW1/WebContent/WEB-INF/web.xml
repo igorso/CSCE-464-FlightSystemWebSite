@@ -99,7 +99,7 @@
     <servlet-name>BookingHistory</servlet-name>
     <url-pattern>/BookingHistory</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>UpdateShoppingCart</display-name>
     <servlet-name>UpdateShoppingCart</servlet-name>

@@ -1,6 +1,7 @@
 package ass1;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class UpdateBooking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Get the parameters:
-		String account_idS = request.getParameter("accountID");
+		String account_idS = request.getParameter("accountId");
 		
 		int account_id=Integer.parseInt(account_idS); 
 		System.out.println("Account Id"+ account_id);
@@ -73,19 +74,14 @@ public class UpdateBooking extends HttpServlet {
 		case 3: errorMessage = "There was a problem with your Bank DataBase. Your transaction failed."; break;
 		}
 		
+		PrintWriter out = response.getWriter(); 
 		if(error == 0)
 		{
-			request.setAttribute("transaction", new Boolean(true));
-			
+			out.println( "Work#Your tickets have been registered in our database" );
 		}
 		else {
-			request.setAttribute("transaction", new Boolean(false));
-			request.setAttribute("errorMessage", errorMessage);
+			out.println( "NotWork#"+  errorMessage);
 		}
-
-		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("TransactionConfirmation.jsp");
-		dispatcher.forward(request, response);
 		
 	}
 
