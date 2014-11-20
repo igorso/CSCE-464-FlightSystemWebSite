@@ -31,6 +31,7 @@ function askBank()
     		//alert("It worked");
     		updateDB();
     		$("#payement").hide();
+    		$("#backSC").hide();
     	}else
  		{
     		//alert("It didnt work");
@@ -105,6 +106,9 @@ function printTicket()
 									<button onclick="printTicket()">Print tickets</button>
 	
 								</form>
+								<form action="./ClearShoppingCart">
+								<input class="ClickButton" type="submit" value="New Flights" align="right">
+								</form>	
 							</div>
 							<form action="./TransactionConfirmation" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
@@ -117,11 +121,11 @@ function printTicket()
 							<p id="DBResults"></p>
 							
 							
-							
-							<form action="./ShoppingCart.jsp">
-								<input class="ClickButton" type="submit" value="Back to shopping cart" align="right">
-							</form>	
-							
+							<div id="backSC">
+								<form action="./ShoppingCart.jsp">
+									<input class="ClickButton" type="submit" value="Back to shopping cart" align="right">
+								</form>	
+							</div>
 							
 							
 								
