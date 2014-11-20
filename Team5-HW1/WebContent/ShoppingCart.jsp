@@ -26,56 +26,18 @@
 
 					<div class="section group">
 						
-							<%
-							if(request.getSession(false).getAttribute("shoppingCart") != null) {
-							ArrayList<DetailedFlightBean> shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
-							%>
+							<jsp:include page="ShoppingCartDisplay.jsp"></jsp:include>
+								
 							<form action="./ViewAndBook" name="flightSelector" method="post">
-								<div class="FlightTable" id="flightResultsTable">
-									<table>
-										<thead>
-											<tr>
-												<td><label>Flight</label></td>
-												<td><label>Plane</label></td>
-												<td><label>Departure time</label></td>
-												<td><label>Number Of seats</label></td>
-												<td><label>Total Cost</label></td>
-												<td><label>Cost per seat</label></td>
-											</tr>
-										</thead>
-										<tbody>
-											<%
-											for (DetailedFlightBean fInfo : shoppingCart) {					
-											%>
-											<tr>
-												<td><label><%=fInfo.getId()%></label></td>
-												<td><label><%=fInfo.getPlane()%></label></td>
-												<td><label><%=fInfo.getDeparture()%></label></td>
-												<td><label><%=fInfo.getNumberOfSeat()%></label></td>
-												<td><label><%=fInfo.getTotalCost()%></label></td>
-												<td><label><%=fInfo.getCost()%></label>
-											</tr>
-											<%
-											}
-											}
-											else{ %>
-												<H3>The shopping cart is EMPTY</H3>
-							 				<% }
-											%>
-										
-									</table>
-								</div>
-								<input class="ClickButton" type="submit" value="Book">
+								<input class="ClickButton" type="submit" value="Check out">
 							</form>
 
 							<br>
+							
 							<form action="./FlightSearch.jsp">
-								<input class="ClickButton" type="submit" value="Search a new flight">
+								<input class="ClickButton" type="submit" value="Continue shopping">
 							</form>
 
-						
-						
-						
 					</div>
 
 				</div>

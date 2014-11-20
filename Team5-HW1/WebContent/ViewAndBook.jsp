@@ -8,15 +8,18 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
-function test()
+function updateCart()
 {
-	var numberSeats = $("#numberSeats").val();
-	
-    $.get("UpdateShoppingCart", {numberSeats:numberSeats}, function(data,status){
-    
-    	$("#results").html("Added to the shopping cart");
-    	$("#add").hide();// We hide the button so the user can not add several times the same flight.
-		});  
+	if(validateNumberOfSeats()) {
+		var numberSeats = $("#numberSeats").val();
+		
+	    $.get("UpdateShoppingCart", {numberSeats:numberSeats}, function(data,status){
+	    
+	    	$("#results").html("Added to the shopping cart");
+	    	$("#add").hide();// We hide the button so the user can not add several times the same flight.
+			});
+	}
+  
 }
 </script>
 
@@ -35,11 +38,14 @@ function test()
 			<header>
 			<p class="introtext">Take a look at the selected flight.</p>
 			</header>
-	<p id="results"> Select the number of seats and add to the shopping cart.</p>
 		</div>
 		<div id="maincontentcontainer">
 			<div class="standardcontainer" id="example">
 				<div class="maincontent">
+
+					<div class="section group">
+						<h3 align="center" id="results"> Select the number of seats and add to the shopping cart.</h3>
+					</div>
 
 					<div class="section group">
 						<div class="col span_2_of_3">
@@ -88,10 +94,10 @@ function test()
 						
 						<div class="col span_1_of_3">						
 							<form action="./ViewAndBook" name="numberOfSeatsForm"
-								method="post" onsubmit="return validateNumberOfSeats()">
+								method="post">
 								<p><label class="field">Choose number of seats:</label> <input class="TextBox" type="number"
 									min="1" max="12" name="numberOfSeats" id="numberSeats"></p>
-								<input class="ClickButton" id="add" type="button" value="Add to shopping cart" onClick="test()">
+								<input class="ClickButton" id="add" type="button" value="Add to shopping cart" onClick="updateCart()">
 							</form>
 							
 							<br />
@@ -135,6 +141,7 @@ function test()
 				alert("Input number of seats is not an integer");
 				return false;
 			}
+			return true;
 		}
 	</script>
 

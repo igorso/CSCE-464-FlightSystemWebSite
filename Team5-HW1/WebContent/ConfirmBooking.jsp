@@ -60,9 +60,7 @@ function askBank()
 					<div class="section group">
 						
 						<div class="col span_2_of_3">
-							<div class="FlightTable">
-								TO DO DISPLAY LIKE THE SHOPPING CART
-							</div>
+							<jsp:include page="ShoppingCartDisplay.jsp"></jsp:include>
 						</div>
 	
 						<div class="col span_1_of_3" >
