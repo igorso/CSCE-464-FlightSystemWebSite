@@ -42,7 +42,7 @@
 							%>
 							
 							<form action="./FlightSearch.jsp">
-								<input class="ClickButton" type="submit" value="Continue shopping">
+								<input class="ClickButton" type="submit" value="Back to shop">
 							</form>
 							
 							<br>
