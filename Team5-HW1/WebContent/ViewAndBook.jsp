@@ -136,7 +136,12 @@ function updateCart()
 					alert("Number of seats has to be greater than zero");
 					return false;
 				}
+				if(x > 12) {
+					alert("Number of seats has to be less than twelve");
+					return false;
+				}
 			}
+			
 			else {
 				alert("Input number of seats is not an integer");
 				return false;

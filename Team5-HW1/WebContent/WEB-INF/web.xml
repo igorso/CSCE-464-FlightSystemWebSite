@@ -129,4 +129,14 @@
     <servlet-name>UpdateBooking</servlet-name>
     <url-pattern>/UpdateBooking</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClearShoppingCart</display-name>
+    <servlet-name>ClearShoppingCart</servlet-name>
+    <servlet-class>ass1.ClearShoppingCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClearShoppingCart</servlet-name>
+    <url-pattern>/ClearShoppingCart</url-pattern>
+  </servlet-mapping>
 </web-app>

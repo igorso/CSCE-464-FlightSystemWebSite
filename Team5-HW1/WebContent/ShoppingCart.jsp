@@ -37,6 +37,10 @@
 							<form action="./FlightSearch.jsp">
 								<input class="ClickButton" type="submit" value="Continue shopping">
 							</form>
+							
+							<form action="./ClearShoppingCart" method="post">
+								<input class="ClickButton" type="submit" value="Discard cart">
+							</form>
 
 					</div>
 
