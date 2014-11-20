@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class Logout.
  */
 public class Logout extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public Logout() {
@@ -26,7 +29,12 @@ public class Logout extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * Nothing is done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +42,8 @@ public class Logout extends HttpServlet {
 	}
 
 	/**
-	 * Invalidate the session and redirects to the login page
+	 * Invalidate the session and redirects to the login page.
+	 *
 	 * @param request the request
 	 * @param response the response
 	 * @throws ServletException the servlet exception

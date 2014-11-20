@@ -16,16 +16,20 @@ import javax.servlet.http.HttpSession;
 import beans.FlightSearchBean;
 import beans.UserBean;
 
+// TODO: Auto-generated Javadoc
 /**
  * Servlet implementation class Login
  * The view of this Servlet is implemented in Login.jsp
  * This class receives and processes form data in the doPost method
  */
 public class Login extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public Login() {
@@ -34,7 +38,12 @@ public class Login extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * Nothing is done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,6 +51,12 @@ public class Login extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Get the parameters: Username and password

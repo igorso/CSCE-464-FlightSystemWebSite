@@ -13,12 +13,17 @@ import javax.servlet.http.HttpSession;
 
 import beans.FlightResultBean;
 import beans.FlightSearchBean;
-
+/**
+ * The Class FlightSearch.
+ */
 public class FlightSearch extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public FlightSearch() {
@@ -27,7 +32,12 @@ public class FlightSearch extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * Nothing is done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,14 +58,16 @@ public class FlightSearch extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 
+		HttpSession session = request.getSession();
 		FlightSearchBean flightBean;
-		if(request.getParameter("backToFlightResults") == null) {
+		if(session.getAttribute("flightBean") == null) {
+			System.out.println("We have to create a new search flight");
 			flightBean = new FlightSearchBean();
 		}
 		else {
-			HttpSession session = request.getSession();
+			System.out.println("We are taking it in the session");
 			flightBean = (FlightSearchBean) session.getAttribute("flightBean");
+			System.out.println("Source="+flightBean.getSource());
 		}
 		
 		// Query the database to search for matching flight results

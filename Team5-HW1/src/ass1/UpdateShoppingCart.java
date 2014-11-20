@@ -11,13 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.*;
+
 /**
- * Servlet implementation class UpdateShoppingCart
+ * Servlet implementation class UpdateShoppingCart.
+ * This class addds a flight in the shopping cart.
  */
 public class UpdateShoppingCart extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
+     * Instantiates a new update shopping cart.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public UpdateShoppingCart() {
@@ -26,6 +32,12 @@ public class UpdateShoppingCart extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 * After checking if the shopping cart is not empty, it updates the bean (with the total cost) and adds it in the shopping cart.
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,6 +77,12 @@ public class UpdateShoppingCart extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
