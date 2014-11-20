@@ -6,16 +6,18 @@
 
 	<jsp:include page="CssAndExternalLibrary.jsp"></jsp:include>
 
-<title>Login successfull</title>
+<title>Login successful</title>
 </head>
 <body>
+	
+	<jsp:include page="Header.jsp"></jsp:include>
 	
 	<header>
 		<p class="introtext">Your login is successful!</p>
 	</header>
 	
 	<div class="section group">
-		<a href="/Team5-HW1/FlightSearch.jsp">Look for a flight</a>
+		<a href="/Team5-HW2/FlightSearch.jsp">Look for a flight</a>
 	</div>
 	
 	<jsp:include page="ExternalLibraryScript.jsp"></jsp:include>

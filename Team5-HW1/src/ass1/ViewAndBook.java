@@ -55,7 +55,6 @@ public class ViewAndBook extends HttpServlet {
 		DetailedFlightBean parameters= (DetailedFlightBean) session.getAttribute("selectedFlight");
 		// Query the database to search for the selected flight
 		
-		
 		//Look in the database if there is still enough seats available:
 		DetailedFlightBean flight = null;
 		try {

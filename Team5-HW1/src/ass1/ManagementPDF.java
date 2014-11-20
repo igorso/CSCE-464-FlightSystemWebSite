@@ -54,7 +54,7 @@ public class ManagementPDF {
   	public static void main(String[] args) {
 		  DetailedFlightBean detailsF=new DetailedFlightBean();
 		  UserBean user=new UserBean();
-		  createPDF(detailsF,user,"C:\\Users\\stanislas\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Team5-HW1\\FirstPdf.pdf");
+		  createPDF(detailsF,user,"C:\\Users\\stanislas\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Team5-HW2\\FirstPdf.pdf");
 		  
 	  }
 	 

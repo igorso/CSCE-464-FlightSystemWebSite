@@ -29,7 +29,7 @@
 				<p><label class="field">Confirm:</label> <input class="TextBox"	type="password" name="pwd_confirm"> </p>
 				<p><input class="ClickButton" type="submit" value="Registration"></p>
 			</form>
-			<a href="/Team5-HW1/Login.jsp">Back to login page</a>
+			<a href="/Team5-HW2/Login.jsp">Back to login page</a>
 		</div>
 		
 		<div class="col span_1_of_3">
