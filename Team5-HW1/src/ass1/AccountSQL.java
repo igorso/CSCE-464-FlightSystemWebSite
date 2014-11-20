@@ -27,13 +27,12 @@ public class AccountSQL {
 	
 	/**
 	 * This class loads the MySQL Driver and Connects to the entered database.
-	 *	This class make the final transaction, try to make the payement, if it worked update the booking table, if it didn't return an error
-	 * @param parameters the Bean containing the flight information
-	 * @param account_id the account_id
-	 * @param holder_id the holder_id
-	 * @param routing_number the routing_number
+	 * Contrary to HW2, the bank has already be done. It only update the booking and booking_flights, and return the status of the execution
+	 *
+	 * @param shoppingCart the shopping cart
 	 * @param user_id the user_id
-	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem 
+	 * @param account_id the account_id
+	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem
 	 * @throws SQLException the SQL exception
 	 */
 	
@@ -100,11 +99,11 @@ public class AccountSQL {
 	
 	/**
 	 * Payement.
-	 *	This function look in the database if the account given has enough money and if yes make the payment.
+	 *	This function look in the database if the account given by the user has enough money and if yes make the payment. It returns the status of the execution.
 	 * @param id the account id
 	 * @param holder_id the holder_id
 	 * @param routing_number the routing_number
-	 * @param cost the cost which will be deducted of the balance
+	 * @param cost the cost (which will be deducted of the balance)
 	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem 
 	 * @throws SQLException the SQL exception
 	 */

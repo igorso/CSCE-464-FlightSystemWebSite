@@ -6,8 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
-
-
 /**
  * The Class FlightsSearchSQL. Search for flights in the database
  */

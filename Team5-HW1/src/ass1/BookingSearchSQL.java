@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class BookingSearchSQL. search for the previous booking of a user
  */

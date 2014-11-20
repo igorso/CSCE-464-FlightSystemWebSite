@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ClearShoppingCart is a servlet that erases the shopping cart after check out.
  */
@@ -49,10 +50,7 @@ public class ClearShoppingCart extends HttpServlet {
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Processing of the form DATA:
-	 * 1) Query the database for the Flight Number that was given by the FlightResults.jsp
-	 * 2) Put that information in a DetailedFlightBean
-	 * 3) Forward to ViewAndBook.jsp
+	 * Just put a null value to the shopping cart and redirect to FlightSearch
 	 * @see 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -13,12 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import beans.DetailedFlightBean;
 import beans.UserBean;
 
+
 /**
- * Servlet implementation class PrinterPDF
+ * Servlet implementation class PrinterPDF.
  */
 public class PrinterPDF extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+    
     /**
+     * Instantiates a new printer pdf.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public PrinterPDF() {
@@ -27,6 +33,12 @@ public class PrinterPDF extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,6 +46,12 @@ public class PrinterPDF extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {

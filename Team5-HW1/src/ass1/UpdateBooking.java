@@ -16,12 +16,16 @@ import beans.DetailedFlightBean;
 import beans.UserBean;
 
 /**
- * Servlet implementation class UpdateBooking
+ * Servlet implementation class UpdateBooking.
  */
 public class UpdateBooking extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
+     * Instantiates a new update booking.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public UpdateBooking() {
@@ -30,8 +34,17 @@ public class UpdateBooking extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 * This is a separate servlet called only by AJAX.
+	 * This servlet update the database and return a string in the request:
+	 * 		Work#Your tickets have been registered in our database
+	 *	 	NotWork#"error"
+	 * The results will be parsed after by the ConfirmBooking.jsp
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 *
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -86,6 +99,12 @@ public class UpdateBooking extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

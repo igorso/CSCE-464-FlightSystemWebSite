@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import beans.*;
 
 import beans.FlightSearchBean;
-
 /**
- * The Class FlightsBookSQL looks if there is enough seat left in the flight
+ * The Class FlightsBookSQL looks if there is enough seat left in the flight.
  */
 public class FlightsBookSQL {
 	
@@ -30,7 +29,6 @@ public class FlightsBookSQL {
 	 * Seats available.
 	 *
 	 * @param parameters the details of the flight
-	 * @param numberSeats the number seats
 	 * @return true, if there is enough seats
 	 * @throws SQLException the SQL exception
 	 */

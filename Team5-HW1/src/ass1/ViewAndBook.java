@@ -14,11 +14,17 @@ import javax.servlet.http.HttpSession;
 import beans.DetailedFlightBean;
 import beans.FlightSearchBean;
 
+/**
+ * The Class ViewAndBook.
+ */
 public class ViewAndBook extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public ViewAndBook() {
@@ -27,7 +33,12 @@ public class ViewAndBook extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * Nothing is done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,12 +46,19 @@ public class ViewAndBook extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * 1) Use the given numberOfSeats (@ request) to query the database for available seats
-	 * 2) Must also consider which class the client wants. *Use the DetailedFlightBean
-	 * 3) Calculate the cost of the flight
-	 * 4) Forward request to the Transaction.jsp page with the flight details, number of seats
-	 *    and total cost
+	 * For each flight in the shopping cart:
+		 * 1) Use the given numberOfSeats (@ request) to query the database for available seats
+		 * 2) Must also consider which class the client wants. *Use the DetailedFlightBean
+		 * 3) Calculate the cost of the flight
+		 * 4) Forward request to the Transaction.jsp page with the flight details, number of seats
+		 *    and total cost
 	 * @see 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,12 +96,17 @@ public class ViewAndBook extends HttpServlet {
 			}
 			noSeatPb=noSeatPb&&thereIsEnoughSeat;
 		}
-		
-		//TO DO WHAT HAPPENS IF THERE IS NOT ENOUGH SEATS
-		
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmBooking.jsp");
-		dispatcher.forward(request, response);
+		if (noSeatPb)
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmBooking.jsp");
+			dispatcher.forward(request, response);
+		}else
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ClearShoppingCart");
+			System.out.println("Sorry, we do not have enough available! The shopping cart has been discarded");
+			dispatcher.forward(request, response);
+		}
+			
 	}
 
 }

@@ -13,11 +13,17 @@ import javax.servlet.http.HttpSession;
 import beans.DetailedFlightBean;
 import beans.FlightSearchBean;
 
+/**
+ * The Class FlightResults.
+ */
 public class FlightResults extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
-     * We do not use the constructor
+     * We do not use the constructor.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public FlightResults() {
@@ -26,7 +32,12 @@ public class FlightResults extends HttpServlet {
     }
 
 	/**
-	 * Nothing is done here
+	 * Nothing is done here.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,6 +45,12 @@ public class FlightResults extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * Processing of the form DATA:
 	 * 1) Query the database for the Flight Number that was given by the FlightResults.jsp
@@ -70,6 +87,11 @@ public class FlightResults extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
+	/**
+	 * Populate detailed flight bean.
+	 *
+	 * @param request the request
+	 */
 	protected void populateDetailedFlightBean(HttpServletRequest request) {
 	}
 	
