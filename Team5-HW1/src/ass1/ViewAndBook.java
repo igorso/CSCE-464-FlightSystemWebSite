@@ -2,6 +2,7 @@ package ass1;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,45 +44,45 @@ public class ViewAndBook extends HttpServlet {
 	 * @see 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nChosenSeats = 0;
-		String snChosenSeats = request.getParameter("numberOfSeats");
-
 		
-			nChosenSeats = Integer.parseInt(snChosenSeats);
-			System.out.println("You want "+nChosenSeats+" seats");
-		boolean thereIsEnoughSeat=false;
 		
+		//We are going to verify for all the flights in the shopping cart that there is still seats available
+		boolean thereIsEnoughSeat=true;
+		boolean noSeatPb=true;
 		HttpSession session =request.getSession();
-		DetailedFlightBean parameters= (DetailedFlightBean) session.getAttribute("selectedFlight");
-		// Query the database to search for the selected flight
-		
-		
-		//Look in the database if there is still enough seats available:
-		DetailedFlightBean flight = null;
-		try {
-			thereIsEnoughSeat = FlightsBookSQL.SeatsAvailable(parameters, nChosenSeats);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-
-		if(thereIsEnoughSeat) {
-			System.out.println("You are lucky, there is still "+nChosenSeats +" available");
+		ArrayList<DetailedFlightBean> shoppingCart =  null;
+		if(session.getAttribute("shoppingCart") == null) {
+			shoppingCart =  new ArrayList<DetailedFlightBean>();
+			System.out.println("Shopping Cart Empty");
 		}
 		else {
-			System.out.println("Sorry, we do not have "+nChosenSeats +" available");
+			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
+			System.out.println("The shopping cart was not empty already "+shoppingCart.size());
+		}
+
+		for (DetailedFlightBean parameters : shoppingCart) {					
+			//Look in the database to know if there is seats available:
+			try {
+				thereIsEnoughSeat = FlightsBookSQL.SeatsAvailable(parameters);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+	
+			if(thereIsEnoughSeat) {
+				System.out.println("You are lucky, there is still enough seats available");
+			}
+			else {
+				System.out.println("Sorry, we do not have enough available for this flight");
+			}
+			noSeatPb=noSeatPb&&thereIsEnoughSeat;
 		}
 		
-		// Needs to calculate the cost of this flight
-		float cost = parameters.getCost()*nChosenSeats;
-		parameters.setNumberOfSeat(nChosenSeats);
-		// Redirects to the transaction page. Put nChosenSeats and cost at the request before forwarding
-		request.setAttribute("seats", nChosenSeats);
+		//TO DO WHAT HAPPENS IF THERE IS NOT ENOUGH SEATS
 		
-		request.setAttribute("cost", cost);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Transaction.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmBooking.jsp");
 		dispatcher.forward(request, response);
 	}
 

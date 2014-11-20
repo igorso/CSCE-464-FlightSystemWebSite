@@ -14,6 +14,9 @@ public class DetailedFlightBean {
 	/** The cost. */
 	private int cost; //cost of 1 flight
 	
+	/** The totalcost. */
+	private int totalCost; //cost of 1 flight
+	
 	/** The operator. */
 	private String operator;
 	
@@ -134,6 +137,14 @@ public class DetailedFlightBean {
 		this.cost = cost;
 	}
 	
+	public int getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(int totalCost) {
+		this.totalCost = totalCost;
+	}
+
 	/**
 	 * Gets the source.
 	 *

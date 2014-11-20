@@ -13,6 +13,7 @@
 			%>
 			<a href="BookingHistory">Booking History</a>
 			<a href="Logout">Logout</a>
+			<a href="ShoppingCart.jsp">Shopping Cart</a>
 		<%
 		}
 		else {

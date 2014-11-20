@@ -5,6 +5,20 @@
 <head>
 
 	<jsp:include page="CssAndExternalLibrary.jsp"></jsp:include>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+function test()
+{
+	var numberSeats = $("#numberSeats").val();
+	
+    $.get("UpdateShoppingCart", {numberSeats:numberSeats}, function(data,status){
+    
+    	$("#results").html("Added to the shopping cart");
+    	$("#add").hide();// We hide the button so the user can not add several times the same flight.
+		});  
+}
+</script>
 
 <title>View and Book</title>
 
@@ -21,7 +35,7 @@
 			<header>
 			<p class="introtext">Take a look at the selected flight.</p>
 			</header>
-
+	<p id="results"> Select the number of seats and add to the shopping cart.</p>
 		</div>
 		<div id="maincontentcontainer">
 			<div class="standardcontainer" id="example">
@@ -76,14 +90,20 @@
 							<form action="./ViewAndBook" name="numberOfSeatsForm"
 								method="post" onsubmit="return validateNumberOfSeats()">
 								<p><label class="field">Choose number of seats:</label> <input class="TextBox" type="number"
-									min="1" max="12" name="numberOfSeats"></p>
-								<input class="ClickButton" type="submit" value="Check out">
+									min="1" max="12" name="numberOfSeats" id="numberSeats"></p>
+								<input class="ClickButton" id="add" type="button" value="Add to shopping cart" onClick="test()">
 							</form>
 							
 							<br />
 	
 							<form action="./FlightSearch" method="post">
 								<input class="ClickButton" type="submit" name="backToFlightResults" value="Back">
+							</form>
+							
+							<br />
+	
+							<form action="./ShoppingCart.jsp">
+								<input class="ClickButton" type="submit" value="Go to the shopping cart">
 							</form>
 							
 							<br />
@@ -97,6 +117,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<script type="text/javascript">
 		function validateNumberOfSeats() {

@@ -34,7 +34,7 @@ public class FlightsBookSQL {
 	 * @return true, if there is enough seats
 	 * @throws SQLException the SQL exception
 	 */
-	public static boolean SeatsAvailable(DetailedFlightBean parameters,  int numberSeats) throws SQLException{
+	public static boolean SeatsAvailable(DetailedFlightBean parameters) throws SQLException{
 		FlightsBookSQL jdbc = new FlightsBookSQL("cse.unl.edu", "cse464", "sheili", "]34Dr3");
 		
 		//This function looks if there is still seats available in the Plane:
@@ -44,6 +44,7 @@ public class FlightsBookSQL {
 			int idPlane=parameters.getPlane();
 			int idFlight=parameters.getId();
 			String type=parameters.getFlightClass();
+			int numberSeats=parameters.getNumberOfSeat();
 			System.out.println(type);
 			
 			param.add(idPlane);

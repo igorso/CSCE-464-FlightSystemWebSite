@@ -99,4 +99,34 @@
     <servlet-name>BookingHistory</servlet-name>
     <url-pattern>/BookingHistory</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateShoppingCart</display-name>
+    <servlet-name>UpdateShoppingCart</servlet-name>
+    <servlet-class>ass1.UpdateShoppingCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateShoppingCart</servlet-name>
+    <url-pattern>/UpdateShoppingCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Bank</display-name>
+    <servlet-name>Bank</servlet-name>
+    <servlet-class>ass1.Bank</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Bank</servlet-name>
+    <url-pattern>/Bank</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateBooking</display-name>
+    <servlet-name>UpdateBooking</servlet-name>
+    <servlet-class>ass1.UpdateBooking</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateBooking</servlet-name>
+    <url-pattern>/UpdateBooking</url-pattern>
+  </servlet-mapping>
 </web-app>

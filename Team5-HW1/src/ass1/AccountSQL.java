@@ -38,34 +38,23 @@ public class AccountSQL {
 	 */
 	
 	
-	public static int transaction_successfull(
-		DetailedFlightBean parameters, 
-		int account_id, 
-		int holder_id, 
-		int routing_number, 
-		int user_id
-		) 
-				throws SQLException{
-		int flightId =parameters.getId();
-		int numberOfSeats=parameters.getNumberOfSeat(); 
-		int totalCost=parameters.getCost()*numberOfSeats;
-		
-		int payementError= Payement(account_id,holder_id, routing_number,totalCost);
-		
-		if (payementError==0)
-		{
-			System.out.println("Payement Successful! We are now uptdating our database!");
-				
-			
+	public static int updateDB( ArrayList<DetailedFlightBean> shoppingCart,int user_id,	int account_id) throws SQLException
+	{
+		for (DetailedFlightBean parameters : shoppingCart) 
+		{	
+			//get DATA:
+			int flightId =parameters.getId();
+			int numberOfSeats=parameters.getNumberOfSeat(); 
+			int cost=parameters.getCost();
 			AccountSQL jdbc = new AccountSQL("cse.unl.edu", "sheili", "sheili", "]34Dr3");
-			
+				
 			//Insert a line in booking:
 			ArrayList<Object> param =  new ArrayList<Object>();
 			param.add(flightId);//What does it mean exactly????
 			param.add(numberOfSeats);
 			param.add(account_id);
 			param.add(user_id);
-			param.add(totalCost);
+			param.add(cost);
 			//param.add(Timestamp.valueOf("2014-09-30 11:41:00")); the date is now added automatically
 			jdbc.updateDB("insert into bookings(date_of_booking,flight_ids,number_of_seats, account_id, user_id,total_cost) "
 					+ "values(NOW(),? ,? ,? ,? ,? );"  
@@ -77,20 +66,24 @@ public class AccountSQL {
 			ResultSet rs2 = ps.executeQuery();
 			int lastID=0;
 			
-			if (rs2 != null){
-				if(rs2.next()){
+			if (rs2 != null)
+			{
+				if(rs2.next())
+				{
 					lastID=rs2.getInt("LastID");
-					}
+				}
 				else
 				{
 					System.out.println("Last ID not found in the database");
 					return(3);
 				}
-			}else {
+			}
+			else 
+			{
 				System.out.println("A problem appeared in the database connection");	
 				return(3);
 			}
-			
+		
 			//Insert a line in booking flights:
 			param.add(lastID);
 			param.add(flightId);
@@ -100,14 +93,10 @@ public class AccountSQL {
 			
 			System.out.println("Update of the database finished");
 			
-			return (0);
 		}
-		else
-		{
-			System.out.println("Sorry the payement operation did not work, there is the error : " + payementError);
-			return(payementError);
-		}
-	}
+		return (0);
+}
+
 	
 	/**
 	 * Payement.
