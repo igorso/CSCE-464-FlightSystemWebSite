@@ -10,7 +10,10 @@
 <script>
 function askBank()
 {
-	
+	if (validateForm()==false)
+	{
+	return false;
+	}
 	var accountId = $("#accountId").val();
 	var holderId = $("#holderId").val();
 	var routing = $("#routing").val();
@@ -20,23 +23,50 @@ function askBank()
     	//alert(data);
     	 var response = data.split('#');
     	//alert(response[0]);
-    	alert(response[1]);
+    	//alert(response[1]);
 
     	$("#bResults").html(response[1]);
     	if(response[0]=="Work")
     	{
     		//alert("It worked");
-    	
+    		updateDB();
     		$("#payement").hide();
-    		$("#finish").show();
-    		$("#hiddenAccount").html("<input  type=\"hidden\" name=\"accountID\"  value="+ accountId+" >");
     	}else
  		{
     		//alert("It didnt work");
  		}
 		},"text");  
 }
+
+function updateDB()
+{
+	var accountId = $("#accountId").val();
+    $.get("UpdateBooking", {accountId:accountId}, function(data,status,xhr){
+    	var response = data.split('#');
+    	//alert(response[0]);
+    	
+
+    	$("#DBResults").html(response[1]);
+    	if(response[0]=="Work")
+    	{
+    		//alert("It worked");
+    		$("#infoForm").show();
+    	
+    	}else
+ 		{
+    		alert(response[1]);
+ 		}
+		},"text");  
+}
+
+
+function printTicket()
+{  
+	window.print();
+}
 </script>
+
+
 <title>Booking Confirm</title>
 </head>
 <body>
@@ -64,22 +94,37 @@ function askBank()
 						</div>
 	
 						<div class="col span_1_of_3" >
+							<div id="infoForm" style="display: none;">
+								<form name="flightSearch" method="post" action="FlightSearch" >				
+									<p><label class="field">Name:</label> <input class="TextBox" type="text" name="name"></p>
+									<p><label class="field">Sex:</label> <input class="TextBox" type="text" name="Sex"></p>
+									<p><label class="field">Age:</label> <input class="TextBox" type="text" name="Age"></p>	
+								</form>
+								<a id="myLink" href="./PrinterPDF" target="_blank">Print PDF (does not work)</a>
+								<form action="./FlightSearch.jsp">
+									<button onclick="printTicket()">Print tickets</button>
+	
+								</form>
+							</div>
 							<form action="./TransactionConfirmation" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>
 								<input class="ClickButton"  type="button" value="Pay" onClick="askBank()">
+								
 							</form>
-							<form action="./UpdateBooking">
 							<p id="bResults"></p>
-							<p id="hiddenAccount"></p>
-									<input class="ClickButton" type="submit" value="Finish" align="right" style="display: none;" id="finish">
-							</form>		
+							<p id="DBResults"></p>
+							
 							
 							
 							<form action="./ShoppingCart.jsp">
 								<input class="ClickButton" type="submit" value="Back to shopping cart" align="right">
-							</form>		
+							</form>	
+							
+							
+							
+								
 						</div>
 	
 						<br>
