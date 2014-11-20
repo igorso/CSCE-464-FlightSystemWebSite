@@ -6,12 +6,10 @@
 
 	<jsp:include page="CssAndExternalLibrary.jsp"></jsp:include>
 
-<title>Login successful</title>
+<title>Login successfull</title>
 </head>
 <body>
-	
 	<jsp:include page="Header.jsp"></jsp:include>
-	
 	<header>
 		<p class="introtext">Your login is successful!</p>
 	</header>

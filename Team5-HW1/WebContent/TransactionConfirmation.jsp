@@ -34,55 +34,7 @@
 							
 							<div class="col span_2_of_3">
 								<div class="FlightTable">
-									<table>
-										<tbody>
-											<tr>
-												<td><label>Flight number</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="id" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Plane number</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="plane" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Operator</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="operator" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Source</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="source" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Destination</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="destination" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Departure:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="departure" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Arrival:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="arrival" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Number of seats:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="numberOfSeat" /></label></td>
-											</tr>
-											<tr>
-												<td><label>Cost per passenger:</label></td>
-												<td><label><jsp:getProperty name="selectedFlight"
-															property="cost" /></label></td>
-											</tr>
-										</tbody>
-									</table>
+									TO DO SHOW THE SHOPPING CART
 								</div>
 							</div>
 		

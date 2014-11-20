@@ -46,6 +46,7 @@ public class Logout extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session != null){
 			session.invalidate();
+			System.out.println("invalidate the session");
 		}
 		response.sendRedirect("Login.jsp");
 	}
