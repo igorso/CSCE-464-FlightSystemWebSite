@@ -28,15 +28,24 @@
 						
 							<jsp:include page="ShoppingCartDisplay.jsp"></jsp:include>
 								
-							<form action="./ViewAndBook" name="flightSelector" method="post">
+							<%
+							if(request.getSession(false).getAttribute("shoppingCart") != null) {
+							%>	
+							<form action="./ViewAndBook" name="flightSelector" method="post" onsubmit="return isCartEmpty()">
 								<input class="ClickButton" type="submit" value="Check out">
 							</form>
 
 							<br>
+
+							<%
+							}
+							%>
 							
 							<form action="./FlightSearch.jsp">
 								<input class="ClickButton" type="submit" value="Continue shopping">
 							</form>
+							
+							<br>
 							
 							<form action="./ClearShoppingCart" method="post">
 								<input class="ClickButton" type="submit" value="Discard cart">
@@ -48,8 +57,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	
 	<jsp:include page="ExternalLibraryScript.jsp"></jsp:include>
 
