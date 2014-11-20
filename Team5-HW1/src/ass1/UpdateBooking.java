@@ -63,6 +63,9 @@ public class UpdateBooking extends HttpServlet {
 			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
 		}
 		UserBean userBean = (UserBean) session.getAttribute("userBean");
+		if (userBean==null)
+			userBean=new UserBean();
+				
 		int user_id=userBean.getId();
 		System.out.println("The user id is:"+ user_id);
 		

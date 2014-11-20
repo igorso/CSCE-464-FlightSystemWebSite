@@ -50,7 +50,7 @@ function updateDB()
     	$("#DBResults").html(response[1]);
     	if(response[0]=="Work")
     	{
-    		//alert("It worked");
+    		alert("It worked");
     		$("#infoForm").show();
     	
     	}else
@@ -96,15 +96,11 @@ function printTicket()
 	
 						<div class="col span_1_of_3" >
 							<div id="infoForm" style="display: none;">
-								<form name="flightSearch" method="post" action="FlightSearch" >				
+								<form name="flightSearch" method="post" action="PrinterPDF" target="_blank" >				
 									<p><label class="field">Name:</label> <input class="TextBox" type="text" name="name"></p>
-									<p><label class="field">Sex:</label> <input class="TextBox" type="text" name="Sex"></p>
-									<p><label class="field">Age:</label> <input class="TextBox" type="text" name="Age"></p>	
-								</form>
-								<a id="myLink" href="./PrinterPDF" target="_blank">Print PDF (does not work)</a>
-								<form action="./FlightSearch.jsp">
-									<button onclick="printTicket()">Print tickets</button>
-	
+									<p><label class="field">Sex:</label> <input class="TextBox" type="text" name="sex"></p>
+									<p><label class="field">Age:</label> <input class="TextBox" type="text" name="age"></p>	
+									<input class="ClickButton" type="submit" value="Print Tickets" align="right">
 								</form>
 								<form action="./ClearShoppingCart">
 								<input class="ClickButton" type="submit" value="New Flights" align="right">

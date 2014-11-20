@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.DetailedFlightBean;
 import beans.UserBean;
@@ -56,15 +58,30 @@ public class PrinterPDF extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		System.out.println("Do post of printer");
-		//Get the data from the session:
-		//HttpSession session = request.getSession();
-		DetailedFlightBean flightDetail = new DetailedFlightBean();//(DetailedFlightBean) session.getAttribute("selectedFlight");		
-		UserBean userBean = new UserBean();//(UserBean) session.getAttribute("userBean");
+		//Get the data from the session:		
+		ArrayList<DetailedFlightBean> shoppingCart =  null;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("shoppingCart") == null) {
+			shoppingCart =  new ArrayList<DetailedFlightBean>();
+			System.out.println("Shopping Cart Empty");
+		}
+		else {
+			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
+			//System.out.println("The shopping cart was not empty already "+shoppingCart.size());
+		}
+		UserBean userBean = (UserBean) session.getAttribute("userBean");
 		
+		//Get the data from the request:
+		 String name = request.getParameter("name");
+	     String age = request.getParameter("age");
+	     String sex = request.getParameter("sex");
+	     String toWrite= name+ "\n"+ age+ "\n" +sex+"\n";
+	     System.out.println(toWrite);
 		//Create the PDF with the beans:
-		String pdfFileName = "FirstPdf.pdf";
+		String pdfFileName = "Tickets.pdf";
 		String contextPath = getServletContext().getRealPath(File.separator);
-		createPDF(flightDetail, userBean,contextPath + pdfFileName);
+		ManagementPDF.createPDF(shoppingCart, userBean,contextPath + pdfFileName, name,age,sex); 
+		//createPDF(flightDetail, userBean,contextPath + pdfFileName);
 		System.out.println("End of the PDF print");
 		
 		//Display it on the screen:
@@ -74,26 +91,14 @@ public class PrinterPDF extends HttpServlet {
 		response.setContentType("application/pdf");
 		response.addHeader("Content-Disposition", "attachment; filename=" + pdfFileName);
 		response.setContentLength((int) pdfFile.length());
-
 		FileInputStream fileInputStream = new FileInputStream(pdfFile);
 		OutputStream responseOutputStream = response.getOutputStream();
 		int bytes;
 		while ((bytes = fileInputStream.read()) != -1) {
 			responseOutputStream.write(bytes);
 		}
+		fileInputStream.close();
 
 	}
 	
-	/**
-	 * Creates the pdf (by calling ManagementPDF).
-	 *
-	 * @param details the details
-	 * @param user the user
-	 * @param path the path
-	 */
-	void createPDF(DetailedFlightBean details,UserBean user,String path)
-	  {
-		System.out.println("We will create the pdf file with the bookinge We are in the servlet"+path);
-		//ManagementPDF.createPDF(details, user,path); //This is where it does not work! Error 500
-	  }
 }
