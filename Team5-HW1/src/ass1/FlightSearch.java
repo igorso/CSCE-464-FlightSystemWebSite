@@ -59,18 +59,26 @@ public class FlightSearch extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String source= request.getParameter("source");
-		String destination =request.getParameter("destination");
-		String date =request.getParameter("date");
-		String nSeats =request.getParameter("nSeats");
-		String flightClass =request.getParameter("flightClass");
-		
-		
 		
 		FlightSearchBean flightBean;
-		if(session.getAttribute("flightBean") == null) {
+		
+		if(request.getParameter("backToFlightResults") == null) { //session.getAttribute("flightBean") == null) {
 			System.out.println("We have to create a new search flight");
 			flightBean = new FlightSearchBean();
+			
+			String source= request.getParameter("source");
+			String destination =request.getParameter("destination");
+			String date =request.getParameter("date");
+			String nSeats =request.getParameter("nSeats");
+			String flightClass =request.getParameter("flightClass");
+
+			flightBean.setSource(source);
+			flightBean.setDateOfTravel(date);
+			flightBean.setDestination(destination);
+			flightBean.setFlightClass(flightClass);
+			flightBean.setNumberOfSeats(Integer.parseInt(nSeats));
+			
+			session.setAttribute("flightBean", flightBean);
 		}
 		else {
 			System.out.println("We are taking it in the session");
@@ -78,11 +86,6 @@ public class FlightSearch extends HttpServlet {
 			System.out.println("Source="+flightBean.getSource());
 		}
 		
-		flightBean.setSource(source);
-		flightBean.setDateOfTravel(date);
-		flightBean.setDestination(destination);
-		flightBean.setFlightClass(flightClass);
-		flightBean.setNumberOfSeats(Integer.parseInt(nSeats));
 		// Query the database to search for matching flight results
 		ArrayList<FlightResultBean> dbResults=null;
 		try {
