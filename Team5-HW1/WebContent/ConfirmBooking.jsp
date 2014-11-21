@@ -50,7 +50,7 @@ function updateDB()
     	$("#DBResults").html(response[1]);
     	if(response[0]=="Work")
     	{
-    		alert("It worked");
+    		
     		$("#infoForm").show();
     	
     	}else
