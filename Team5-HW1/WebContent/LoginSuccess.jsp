@@ -15,7 +15,7 @@
 	</header>
 	
 	<div class="section group">
-		<a href="/Team5-HW2/FlightSearch.jsp">Look for a flight</a>
+		<a href="/Team5-HW3-AirlineReservation/FlightSearch.jsp">Look for a flight</a>
 	</div>
 	
 	<jsp:include page="ExternalLibraryScript.jsp"></jsp:include>
