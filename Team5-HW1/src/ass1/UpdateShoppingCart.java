@@ -55,7 +55,8 @@ public class UpdateShoppingCart extends HttpServlet {
 			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
 			System.out.println("The shopping cart was not empty already "+shoppingCart.size());
 		}
-				
+		
+		
 		
 		//Update the bean:
 		System.out.println("update the bean 'selectedFlight' wich is a DetailedFilghtBean");
@@ -68,7 +69,17 @@ public class UpdateShoppingCart extends HttpServlet {
 		System.out.println("add it to the shopping cart 'shoppingCart'");
 		shoppingCart.add(toAdd);
 		session.setAttribute("shoppingCart", shoppingCart);
-				
+		
+		//add the total cost to the session:
+		int totalSCcost=0;
+		//To do verify NULL!
+		for (DetailedFlightBean flight : shoppingCart) {	
+			totalSCcost+=flight.getTotalCost();
+		}
+		String StotalSCcost=String.valueOf( totalSCcost );
+		System.out.println(StotalSCcost);
+		session.setAttribute("totalCost", StotalSCcost);
+		
 		//Print the results:
 		System.out.println("NumberOfSeats= "+ numberSeats);
 		PrintWriter out = response.getWriter(); 

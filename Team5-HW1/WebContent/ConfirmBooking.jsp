@@ -17,8 +17,10 @@ function askBank()
 	var accountId = $("#accountId").val();
 	var holderId = $("#holderId").val();
 	var routing = $("#routing").val();
+	var totalCost = $("#Cost").text();
+	alert(totalCost);
 	//alert("We will ask the bank")
-    $.get("Bank", {accountId:accountId,holderId:holderId,routing:routing}, function(data,status,xhr){
+    $.get("/Team5-HW3-Banking/Bank", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost}, function(data,status,xhr){
     	//alert("Bank finished to work");
     	//alert(data);
     	 var response = data.split('#');
@@ -107,6 +109,8 @@ function printTicket()
 								</form>	
 							</div>
 							<form action="./TransactionConfirmation" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
+								Total cost to pay:
+								<p id="Cost" ><%= request.getSession().getAttribute("totalCost")	%></p>
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>

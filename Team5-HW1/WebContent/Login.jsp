@@ -44,7 +44,7 @@
 									<input class="ClickButton" type="submit" value="Login" align="right"
 									value=<jsp:getProperty property="password" name="userBean"/>></p>
 								</form>
-								<a href="/Team5-HW2/Registration.jsp">New user: Please register</a>
+								<a href="/Team5-HW3/Registration.jsp">New user: Please register</a>
 							</div>
 						</div>
 						
