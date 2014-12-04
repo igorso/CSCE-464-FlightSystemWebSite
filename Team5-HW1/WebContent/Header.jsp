@@ -1,4 +1,4 @@
-<%@page import="beans.UserBean"%>
+<%@page import="beans.ClientBean"%>
 <div class="section group">
 
 	<div class="col span_1_of_3">
@@ -6,10 +6,14 @@
 	
 	<div class="col span_2_of_3">
 		<%
-		if(request.getSession(false).getAttribute("userBean") != null) {
+		if(request.getSession(false).getAttribute("clientBean") != null) {
 		%>
 			<%= 
-			((UserBean) request.getSession().getAttribute("userBean")).getEmail()
+			((ClientBean) request.getSession().getAttribute("clientBean")).getUser().getFullName()
+			%>
+			
+			<%= 
+			((ClientBean) request.getSession().getAttribute("clientBean")).getOrganization().getName()
 			%>
 			<a href="BookingHistory">Booking History</a>
 			<a href="Logout">Logout</a>
@@ -17,6 +21,7 @@
 		<%
 		}
 		else {
+			
 			response.sendRedirect("Login.jsp");
 		}
 		%>

@@ -18,7 +18,7 @@ function askBank()
 	var holderId = $("#holderId").val();
 	var routing = $("#routing").val();
 	var totalCost = $("#Cost").text();
-	alert(totalCost);
+	alert("Authoritazing the "+totalCost+"$ payement");
 	//alert("We will ask the bank")
     $.get("/Team5-HW3-Banking/Bank", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost}, function(data,status,xhr){
     	//alert("Bank finished to work");

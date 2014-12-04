@@ -7,13 +7,18 @@ import java.sql.SQLException;
 
 
 
+
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ClientBean;
 import beans.FlightSearchBean;
+import beans.OrganizationBean;
 import beans.UserBean;
 
 // TODO: Auto-generated Javadoc
@@ -66,7 +71,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		//request.getSession().removeAttribute("userBean");
 		
 		//get request parameters for userID and password
         String user = request.getParameter("user");
@@ -76,6 +81,9 @@ public class Login extends HttpServlet {
         userBean.setEmail(user);
         userBean.setPassword(pwd);
         
+        ClientBean clientBean=new ClientBean();
+        OrganizationBean orgBean=new OrganizationBean();
+        
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
         try {
@@ -83,11 +91,17 @@ public class Login extends HttpServlet {
 			if (userId!=-1)
 			{
 				userBean.setId(userId);
-				HttpSession session = request.getSession(true);
-				session.setAttribute("userBean", userBean);
-				System.out.println("Login successful");
+				userBean.setFullName(UserSQL.get_user_fullname(user));
+				HttpSession session = request.getSession(true);				
+				//session.setAttribute("userBean", userBean);
+				clientBean.setUser(userBean);
 				
+				orgBean=UserSQL.find_organization(user);
+				clientBean.setOrganization(orgBean);
+				System.out.println("Login successful");		
+				session.setAttribute("clientBean", clientBean);
 				response.sendRedirect("LoginSuccess.jsp");
+				
 				
 			}else{
 				System.out.println("You are not registered yet");

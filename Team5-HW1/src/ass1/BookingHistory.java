@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.BookingBean;
+import beans.ClientBean;
 import beans.UserBean;
 
 /**
@@ -63,7 +64,9 @@ public class BookingHistory extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		HttpSession session =request.getSession();
-		UserBean parameters= (UserBean) session.getAttribute("userBean");
+		ClientBean client= (ClientBean) session.getAttribute("clientBean");
+		System.out.println(client.getUser().getEmail());
+		UserBean parameters=client.getUser();
 		// Query the database to search for the selected flight
 		ArrayList<BookingBean> listBooking =  null;
 		

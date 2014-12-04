@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ClientBean;
 import beans.DetailedFlightBean;
 import beans.UserBean;
 
@@ -69,7 +70,10 @@ public class PrinterPDF extends HttpServlet {
 			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
 			//System.out.println("The shopping cart was not empty already "+shoppingCart.size());
 		}
-		UserBean userBean = (UserBean) session.getAttribute("userBean");
+		ClientBean client= (ClientBean) session.getAttribute("clientBean");
+		//System.out.println(client.getUser().getEmail());
+		UserBean userBean=client.getUser();
+		
 		
 		//Get the data from the request:
 		 String name = request.getParameter("name");

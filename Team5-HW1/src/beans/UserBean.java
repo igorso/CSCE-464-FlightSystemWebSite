@@ -10,6 +10,10 @@ public class UserBean {
 	
 	/** The email. */
 	private String email;
+
+	/** The full name. */
+	private String fullName;
+	
 	
 	/** The password. */
 	private String password;
@@ -23,6 +27,24 @@ public class UserBean {
 		this.password = "1";
 		}
 	
+	/**
+	 * Gets the full name.
+	 *
+	 * @return the full name
+	 */
+	public String getFullName() {
+		return fullName;
+	}
+
+	/**
+	 * Sets the full name.
+	 *
+	 * @param fullName the new full name
+	 */
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	/**
 	 * Gets the id.
 	 *

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.ClientBean;
 import beans.DetailedFlightBean;
 import beans.UserBean;
 
@@ -62,9 +63,12 @@ public class UpdateBooking extends HttpServlet {
 		else {
 			shoppingCart = (ArrayList<DetailedFlightBean>) session.getAttribute("shoppingCart");
 		}
-		UserBean userBean = (UserBean) session.getAttribute("userBean");
-		if (userBean==null)
-			userBean=new UserBean();
+		ClientBean client= (ClientBean) session.getAttribute("clientBean");
+		if (client==null)
+		{
+			response.sendRedirect("Logout.java");
+		}
+		UserBean userBean=client.getUser();
 				
 		int user_id=userBean.getId();
 		System.out.println("The user id is:"+ user_id);

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"  import="beans.UserBean"%>
+	pageEncoding="ISO-8859-1"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,8 +9,6 @@
 <title>Login</title>
 
 </head>
-<jsp:useBean id="userBean" class="beans.UserBean"
-	scope="session" />
 	
 <body>
 
@@ -39,12 +37,12 @@
 								<form name="Login" action="Login" method="post"
 									onsubmit="return validateForm()">
 									<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user" 
-									value=<jsp:getProperty property="email" name="userBean"/>></p>
+									value="stanislas.heili@gmail.com"></p>
 									<p><label class="field">Password:</label> <input class="TextBox" type="password" name="pwd">
 									<input class="ClickButton" type="submit" value="Login" align="right"
-									value=<jsp:getProperty property="password" name="userBean"/>></p>
+									></p>
 								</form>
-								<a href="/Team5-HW3/Registration.jsp">New user: Please register</a>
+								<a href="/Team5-HW3-AirlineReservation/Registration.jsp">New user: Please register</a>
 							</div>
 						</div>
 						

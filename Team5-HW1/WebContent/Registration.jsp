@@ -25,11 +25,14 @@
 			<form name="Register" action="Registration" method="post"
 				onsubmit="return validateForm()">
 				<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user"></p>
+				<p><label class="field">Full name:</label> <input class="TextBox" type="text" name="fullname"></p>
+				<p><label class="field">Organization name</label> <input class="TextBox" type="text" name="name"></p>
+				<p><label class="field">Organization adress</label> <input class="TextBox" type="text" name="adress"></p>
 				<p><label class="field">Password:</label> <input class="TextBox" type="password" name="pwd"> </p>
 				<p><label class="field">Confirm:</label> <input class="TextBox"	type="password" name="pwd_confirm"> </p>
 				<p><input class="ClickButton" type="submit" value="Registration"></p>
 			</form>
-			<a href="/Team5-HW2/Login.jsp">Back to login page</a>
+			<a href="/Team5-HW3-AirlineReservation/Login.jsp">Back to login page</a>
 		</div>
 		
 		<div class="col span_1_of_3">

@@ -63,13 +63,27 @@ public class Registration extends HttpServlet {
 		// TODO Auto-generated method stub
 		//get request parameters for userID and password
         String user = request.getParameter("user");
+        String name = request.getParameter("name");
+        String fullname = request.getParameter("fullname");
+        System.out.println(name);
+        if (name=="")
+    	{
+    		name="Name not provided";
+    	}
+        String adress = request.getParameter("adress");
+        if (adress=="")
+    	{
+        	adress="Adress not provided";
+    	}
         String pwd = request.getParameter("pwd");
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
         try {
-			if (UserSQL.registration_successfull(user, pwd))
+			if (UserSQL.registration_successfull(user, pwd,fullname))
 			{
 				System.out.println("Registration successful");
+				//We now can add a line in the organization table and the client table in the database:
+				UserSQL.update_client_organization(name, adress, user);
 				response.sendRedirect("Login.jsp");
 				
 			}else{
