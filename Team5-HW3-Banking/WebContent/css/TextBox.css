@@ -1,0 +1,23 @@
+.TextBox {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cacaca;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-family: arial;
+	color: #2d2e2e;
+	padding-left: 7px;
+	width: 153px;
+	height: 27px;
+	background: -moz-linear-gradient(top, #f4f4f4 30%, #ffffff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #f4f4f4),
+		color-stop(100%, #ffffff));
+	background: -webkit-linear-gradient(top, #f4f4f4 30%, #ffffff 100%);
+	background: -o-linear-gradient(top, #f4f4f4 30%, #ffffff 100%);
+	background: -ms-linear-gradient(top, #f4f4f4 30%, #ffffff 100%);
+	background: linear-gradient(to bottom, #f4f4f4 30%, #ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4',
+		endColorstr='#ffffff', GradientType=0);
+}

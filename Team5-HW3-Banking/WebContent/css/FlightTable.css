@@ -1,0 +1,102 @@
+.FlightTable {
+	border: 1px solid #e74c3c;
+	width: 100%;
+	padding: 0;
+	-webkit-box-shadow: 0px 0px 0px 0px #a4a4a4;
+	-moz-box-shadow: 0px 0px 0px 0px #a4a4a4;
+	box-shadow: 0px 0px 0px 0px #a4a4a4;
+	border-Radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+
+.FlightTable table {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.FlightTable table thead tr {
+	background: #eb2e2e;
+}
+
+.FlightTable table thead tr td {
+	border: 1px solid #e74c3c;
+	text-align: center;
+	vertical-align: middle;
+	border-width: 0px 0px 1px 0px;
+	color: #ffffff;
+	font-weight: bold;
+	font-family: arial;
+	font-size: 20px;
+	height: 35px;
+}
+
+.FlightTable table thead tr td label {
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: inherit;
+	font-weight: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	display: block;
+}
+
+.FlightTable table thead tr td:first-child {
+	border-width: 0px 0px 1px 0px;
+}
+
+.FlightTable table tbody tr:last-child td:first-child {
+	-moz-border-radius-bottomleft: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+.FlightTable table tbody tr:last-child td:last-child {
+	-moz-border-radius-bottomright: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.FlightTable table tbody tr {
+	background: #fff8f8;
+}
+
+.FlightTable table tbody tr:hover {
+	background: #ffeded;
+}
+
+.FlightTable table tbody tr td {
+	vertical-align: middle;
+	height: 110px;
+	text-align: center;
+	color: #000000;
+	font-family: arial;
+	font-size: 12px;
+	border: 1px solid #e74c3c;
+	border-width: 0px 0px 1px 0px;
+}
+
+.FlightTable table tbody tr td label {
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: inherit;
+	font-weight: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	display: block;
+}
+
+.FlightTable table tbody tr td:first-child {
+	border-width: 0px 0px 1px 0px;
+}
+
+.FlightTable table tbody tr:last-child td {
+	border: 0 0 0 1px;
+}

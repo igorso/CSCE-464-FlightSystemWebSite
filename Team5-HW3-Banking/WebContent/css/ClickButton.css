@@ -1,0 +1,23 @@
+.ClickButton {
+	cursor: pointer;
+	border-width: 0px;
+	border-style: solid;
+	border-color: #000000;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	text-align: center;
+	width: 102px;
+	height: 40px;
+	padding-top: undefinedpx;
+	padding-bottom: undefinedpx;
+	font-size: 15px;
+	font-family: arial;
+	color: #ffffff;
+	background: #e74c3c;
+	display: inline-block;
+}
+
+.ClickButton:hover {
+	background: #e85b4c;
+}
