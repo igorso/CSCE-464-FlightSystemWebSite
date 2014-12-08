@@ -139,4 +139,7 @@
     <servlet-name>ClearShoppingCart</servlet-name>
     <url-pattern>/ClearShoppingCart</url-pattern>
   </servlet-mapping>
+  	<session-config>
+		<session-timeout>16</session-timeout>
+	</session-config>
 </web-app>
