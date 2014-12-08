@@ -43,7 +43,7 @@ public class Bank extends HttpServlet {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Beginning to process");
+		System.out.println("Beginning to process the bank demand");
 		//Get the data:
 		
 		// Ask the database if the client has enough balance
