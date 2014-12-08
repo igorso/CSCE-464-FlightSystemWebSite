@@ -50,7 +50,7 @@ public class UpdateBooking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Get the parameters:
-		String account_idS = request.getParameter("accountId");
+		String account_idS = Filter.cleanParameter(request.getParameter("accountId"));
 		
 		int account_id=Integer.parseInt(account_idS); 
 		System.out.println("Account Id"+ account_id);

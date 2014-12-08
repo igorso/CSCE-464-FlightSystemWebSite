@@ -5,6 +5,11 @@ import java.sql.SQLException;
 
 
 
+
+
+
+
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -62,20 +67,20 @@ public class Registration extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//get request parameters for userID and password
-        String user = request.getParameter("user");
-        String name = request.getParameter("name");
-        String fullname = request.getParameter("fullname");
+        String user = Filter.cleanParameter(request.getParameter("user"));
+        String name = Filter.cleanParameter(request.getParameter("name"));
+        String fullname = Filter.cleanParameter(request.getParameter("fullname"));
         System.out.println(name);
         if (name=="")
     	{
     		name="Name not provided";
     	}
-        String adress = request.getParameter("adress");
+        String adress = Filter.cleanParameter(request.getParameter("adress"));
         if (adress=="")
     	{
         	adress="Adress not provided";
     	}
-        String pwd = request.getParameter("pwd");
+        String pwd = Filter.cleanParameter(request.getParameter("pwd"));
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
         
         try {

@@ -61,10 +61,10 @@ public class FlightResults extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int flightNumber = 0;
 		int cost=0;
-		String sFlightNumber = request.getParameter("flightNumber");
+		String sFlightNumber = Filter.cleanParameter(request.getParameter("flightNumber"));
 		if((sFlightNumber != null) && (!sFlightNumber.trim().equals("")))
 			flightNumber = Integer.parseInt(sFlightNumber);
-		String costS = request.getParameter("cost");
+		String costS = Filter.cleanParameter(request.getParameter("cost"));
 		if((costS != null) && (!costS.trim().equals("")))
 			cost = Integer.parseInt(costS);
 		
@@ -86,14 +86,5 @@ public class FlightResults extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("ViewAndBook.jsp"));
 		dispatcher.forward(request, response);
 	}
-	
-	/**
-	 * Populate detailed flight bean.
-	 *
-	 * @param request the request
-	 */
-	protected void populateDetailedFlightBean(HttpServletRequest request) {
-	}
-	
 
 }
