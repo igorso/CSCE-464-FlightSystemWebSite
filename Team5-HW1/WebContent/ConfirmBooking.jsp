@@ -22,7 +22,7 @@ function askBank()
 	var pin = $("#pin").val();
 
 	alert("Authoritazing the "+totalCost+"$ payement");
-    $.get("/Team5-HW3-Banking/Bank;jsessionid=${pageContext.session.id}", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost,pin:pin}, function(data,status,xhr){
+    $.get("/Team5-HW4-Banking/Bank;jsessionid=${pageContext.session.id}", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost,pin:pin}, function(data,status,xhr){
     	 var response = data.split('#');
     	$("#bResults").html(response[1]);
     	if(response[0]=="Work")
