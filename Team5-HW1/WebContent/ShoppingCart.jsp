@@ -30,7 +30,7 @@
 							<jsp:include page="ShoppingCartDisplay.jsp"></jsp:include>
 									
 							<c:if test="${ not empty shoppingCart }">
-								<form action="./ViewAndBook" name="flightSelector" method="post" onsubmit="return isCartEmpty()">
+								<form action="<c:url value='./ViewAndBook' />" name="flightSelector" method="post" onsubmit="return isCartEmpty()">
 									<input class="ClickButton" type="submit" value="Check out">
 								</form> <br>
 							</c:if>

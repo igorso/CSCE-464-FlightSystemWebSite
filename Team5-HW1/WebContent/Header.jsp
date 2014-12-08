@@ -8,13 +8,11 @@
 		
 		<c:choose>
 			<c:when test="${empty sessionScope.clientBean }">
-				<p>entro</p>
-				<c:redirect url="/Team5-HW3-AirlineReservation/Registration.jsp" />
-				<script type="text/javascript"> alert("hehe");</script> 
+				<script> alert("You must be logged in to access this page.");</script>
+				<jsp:forward page="./Login.jsp"></jsp:forward>
 			</c:when>
 			<c:otherwise>
 				${clientBean.user.fullName} 
-					
 				${clientBean.organization.name}
 					
 				<a href="<c:url value='BookingHistory' />">Booking History</a>

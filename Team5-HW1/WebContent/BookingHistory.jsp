@@ -39,7 +39,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="booking" items="${bookingSearch}">
+										<c:forEach var="booking" items="${sessionScope.bookingSearch}">
 										<tr>
 											<td><label><c:out value="${booking.id}" /></label></td>
 											<td><label><c:out value="${booking.dateOfBooking}" /></label></td>
