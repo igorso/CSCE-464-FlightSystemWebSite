@@ -1,30 +1,27 @@
-<%@page import="beans.ClientBean"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <div class="section group">
 
 	<div class="col span_1_of_3">
 	</div>
 	
 	<div class="col span_2_of_3">
-		<%
-		if(request.getSession(false).getAttribute("clientBean") != null) {
-		%>
-			<%= 
-			((ClientBean) request.getSession().getAttribute("clientBean")).getUser().getFullName()
-			%>
-			
-			<%= 
-			((ClientBean) request.getSession().getAttribute("clientBean")).getOrganization().getName()
-			%>
-			<a href="BookingHistory">Booking History</a>
-			<a href="Logout">Logout</a>
-			<a href="ShoppingCart.jsp">Shopping Cart</a>
-		<%
-		}
-		else {
-			
-			response.sendRedirect("Login.jsp");
-		}
-		%>
+		
+		<c:choose>
+			<c:when test="${empty sessionScope.clientBean }">
+				<p>entro</p>
+				<c:redirect url="/Team5-HW3-AirlineReservation/Registration.jsp" />
+				<script type="text/javascript"> alert("hehe");</script> 
+			</c:when>
+			<c:otherwise>
+				${clientBean.user.fullName} 
+					
+				${clientBean.organization.name}
+					
+				<a href="<c:url value='BookingHistory' />">Booking History</a>
+				<a href="<c:url value='Logout' />">Logout</a>
+				<a href="<c:url value='ShoppingCart.jsp' />">Shopping Cart</a>			
+			</c:otherwise>	
+		</c:choose>		
 	</div>
 
 </div>

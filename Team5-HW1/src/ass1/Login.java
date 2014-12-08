@@ -81,7 +81,7 @@ public class Login extends HttpServlet {
         userBean.setEmail(user);
         userBean.setPassword(pwd);
         
-        ClientBean clientBean=new ClientBean();
+        ClientBean clientBean = new ClientBean();
         OrganizationBean orgBean=new OrganizationBean();
         
         System.out.println("You try to register with username: "+user+" and psw: "+pwd);
@@ -92,7 +92,7 @@ public class Login extends HttpServlet {
 			{
 				userBean.setId(userId);
 				userBean.setFullName(UserSQL.get_user_fullname(user));
-				HttpSession session = request.getSession(true);				
+				HttpSession session = request.getSession(true);			
 				//session.setAttribute("userBean", userBean);
 				clientBean.setUser(userBean);
 				
@@ -100,12 +100,12 @@ public class Login extends HttpServlet {
 				clientBean.setOrganization(orgBean);
 				System.out.println("Login successful");		
 				session.setAttribute("clientBean", clientBean);
-				response.sendRedirect("LoginSuccess.jsp");
+				response.sendRedirect(response.encodeRedirectURL("LoginSuccess.jsp"));
 				
 				
 			}else{
 				System.out.println("You are not registered yet");
-				response.sendRedirect("Login.jsp");
+				response.sendRedirect(response.encodeRedirectURL("Login.jsp"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

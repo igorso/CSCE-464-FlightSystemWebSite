@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +21,7 @@ function askBank()
 	var totalCost = $("#Cost").text();
 	alert("Authoritazing the "+totalCost+"$ payement");
 	//alert("We will ask the bank")
-    $.get("/Team5-HW3-Banking/Bank", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost}, function(data,status,xhr){
+    $.get("/Team5-HW3-Banking/Bank;jsessionid=${pageContext.session.id}", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost}, function(data,status,xhr){
     	//alert("Bank finished to work");
     	//alert(data);
     	 var response = data.split('#');
@@ -44,7 +45,7 @@ function askBank()
 function updateDB()
 {
 	var accountId = $("#accountId").val();
-    $.get("UpdateBooking", {accountId:accountId}, function(data,status,xhr){
+    $.get("UpdateBooking;jsessionid=${pageContext.session.id}", {accountId:accountId}, function(data,status,xhr){
     	var response = data.split('#');
     	//alert(response[0]);
     	
@@ -76,9 +77,6 @@ function printTicket()
 
 <jsp:include page="Header.jsp"></jsp:include>
 
-	<jsp:useBean id="selectedFlight" type="beans.DetailedFlightBean"
-		scope="session" />
-
 	<div id="wrapper">
 		<div id="headcontainer">
 			<header>
@@ -98,19 +96,19 @@ function printTicket()
 	
 						<div class="col span_1_of_3" >
 							<div id="infoForm" style="display: none;">
-								<form name="flightSearch" method="post" action="PrinterPDF" target="_blank" >				
+								<form name="flightSearch" method="post" action="<c:url value='PrinterPDF' />" target="_blank" >				
 									<p><label class="field">Name:</label> <input class="TextBox" type="text" name="name"></p>
 									<p><label class="field">Sex:</label> <input class="TextBox" type="text" name="sex"></p>
 									<p><label class="field">Age:</label> <input class="TextBox" type="text" name="age"></p>	
 									<input class="ClickButton" type="submit" value="Print Tickets" align="right">
 								</form>
-								<form action="./ClearShoppingCart">
+								<form action="<c:url value='ClearShoppingCart' />">
 								<input class="ClickButton" type="submit" value="New Flights" align="right">
 								</form>	
 							</div>
-							<form action="./TransactionConfirmation" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
+							<form action="<c:url value='./TransactionConfirmation' />" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
 								Total cost to pay:
-								<p id="Cost" ><%= request.getSession().getAttribute("totalCost")	%></p>
+								<p id="Cost" >${totalCost}</p>
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>
@@ -122,7 +120,7 @@ function printTicket()
 							
 							
 							<div id="backSC">
-								<form action="./ShoppingCart.jsp">
+								<form action="<c:url value='./ShoppingCart.jsp' />">
 									<input class="ClickButton" type="submit" value="Back to shopping cart" align="right">
 								</form>	
 							</div>

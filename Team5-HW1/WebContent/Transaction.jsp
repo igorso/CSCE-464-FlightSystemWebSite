@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,9 +12,6 @@
 <body>
 
 <jsp:include page="Header.jsp"></jsp:include>
-
-	<jsp:useBean id="selectedFlight" type="beans.DetailedFlightBean"
-		scope="session" />
 
 	<div id="wrapper">
 		<div id="headcontainer">
@@ -34,46 +32,39 @@
 									<tbody>
 										<tr>
 											<td><label>Flight number</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="id" /></label></td>
+											<td><label>${selectedFlight.id}</label></td>
 										</tr>
 										<tr>
 											<td><label>Number of seats:</label></td>
-											<td><label><%= request.getAttribute("seats") %></label></td>
+											<td><label>${seats}</label></td>
 										</tr>
 										<tr>
 											<td><label>Cost:</label></td>
-											<td><label><%= request.getAttribute("cost") %></label></td>
+											<td><label>${cost}</label></td>
 										</tr>
 										<tr>
 											<td><label>Plane number</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="plane" /></label></td>
+											<td><label>${selectedFlight.plane}</label></td>
 										</tr>
 										<tr>
 											<td><label>Operator</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="operator" /></label></td>
+											<td><label>${selectedFlight.operator}</label></td>
 										</tr>
 										<tr>
 											<td><label>Source</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="source" /></label></td>
+											<td><label>${selectedFlight.source}</label></td>
 										</tr>
 										<tr>
 											<td><label>Destination</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="destination" /></label></td>
+											<td><label>${selectedFlight.destination}</label></td>
 										</tr>
 										<tr>
 											<td><label>Departure:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="departure" /></label></td>
+											<td><label>${selectedFlight.departure}</label></td>
 										</tr>
 										<tr>
 											<td><label>Arrival:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="arrival" /></label></td>
+											<td><label>${selectedFlight.arrival}</label></td>
 										</tr>
 									</tbody>
 								</table>
@@ -81,14 +72,14 @@
 						</div>
 	
 						<div class="col span_1_of_3">
-							<form action="./TransactionConfirmation" name="bankInfo" method="post" onsubmit="return validateForm()">
+							<form action="<c:url value='./TransactionConfirmation' />" name="bankInfo" method="post" onsubmit="return validateForm()">
 								<label class="field">Account:</label><input class="TextBox" type="text" name="accountId"><br>
 								<label class="field">Holder:</label><input class="TextBox" type="text" name="holderId"><br>
 								<label class="field">Routing:</label><input class="TextBox" type="text" name="routing"><br>
 								<input class="ClickButton" type="submit" value="Confirm" align="right">
 							</form>
 							
-							<form action="./FlightSearch.jsp">
+							<form action="<c:url value='./FlightSearch.jsp' />">
 								<input class="ClickButton" type="submit" value="Cancel" align="right">
 							</form>		
 						</div>

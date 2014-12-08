@@ -98,11 +98,11 @@ public class ViewAndBook extends HttpServlet {
 		}
 		if (noSeatPb)
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ConfirmBooking.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("ConfirmBooking.jsp"));
 			dispatcher.forward(request, response);
 		}else
 		{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ClearShoppingCart");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("ClearShoppingCart"));
 			System.out.println("Sorry, we do not have enough available! The shopping cart has been discarded");
 			dispatcher.forward(request, response);
 		}

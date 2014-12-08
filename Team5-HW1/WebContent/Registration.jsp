@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +23,7 @@
 		</div>
 		
 		<div class="col span_1_of_3">
-			<form name="Register" action="Registration" method="post"
+			<form name="Register" action="<c:url value='Registration' />" method="post"
 				onsubmit="return validateForm()">
 				<p><label class="field">Email:</label> <input class="TextBox" type="text" name="user"></p>
 				<p><label class="field">Full name:</label> <input class="TextBox" type="text" name="fullname"></p>
@@ -32,7 +33,7 @@
 				<p><label class="field">Confirm:</label> <input class="TextBox"	type="password" name="pwd_confirm"> </p>
 				<p><input class="ClickButton" type="submit" value="Registration"></p>
 			</form>
-			<a href="/Team5-HW3-AirlineReservation/Login.jsp">Back to login page</a>
+			<a href="<c:url value='/Login.jsp' />">Back to login page</a>
 		</div>
 		
 		<div class="col span_1_of_3">

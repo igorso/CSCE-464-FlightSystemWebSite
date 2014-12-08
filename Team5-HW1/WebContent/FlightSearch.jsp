@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,19 +40,19 @@
 						
 						<div class="col span_1_of_3">
 							<div>
-								<form name="flightSearch" method="post" action="FlightSearch"
+								<form name="flightSearch" method="post" action="<c:url value='FlightSearch' />"
 									onsubmit="return validateForm()">
 									
 									<p><label class="field">Source:</label> <input class="TextBox" type="text" name="source"
-										value=<jsp:getProperty property="source" name="flightBean"/>></p>
+										value="${flightBean.source}"></p>
 									<p><label class="field">Destination:</label> <input class="TextBox" type="text"
 										name="destination"
-										value=<jsp:getProperty property="destination" name="flightBean"/>></p>
+										value="${flightBean.destination}"></p>
 									<p><label class="field">Date of travel:</label> <input class="datepicker" type="text" name="date" id="inputdate"
-										value=<jsp:getProperty property="dateOfTravel" name="flightBean"/>></p>
+										value="${flightBean.dateOfTravel}"></p>
 									<p><label class="field">Number of seats:</label> <input class="TextBox" type="text"
 										name="nSeats"
-										value=<jsp:getProperty property="numberOfSeats" name="flightBean"/>></p>
+										value="${flightBean.numberOfSeats}"></p>
 									<p><label class="field">Class:</label> <select class="TextBox" name="flightClass">
 										<option value="economy">Economy
 										<option value="business">Business

@@ -103,7 +103,7 @@ public class FlightSearch extends HttpServlet {
 		request.setAttribute("dbResults", dbResults);
 		
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("FlightResults.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("FlightResults.jsp"));
 		dispatcher.forward(request, response);
 	}
 }

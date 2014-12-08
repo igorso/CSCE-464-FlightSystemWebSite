@@ -83,7 +83,7 @@ public class FlightResults extends HttpServlet {
 		session.setAttribute("selectedFlight", flight);
 
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewAndBook.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("ViewAndBook.jsp"));
 		dispatcher.forward(request, response);
 	}
 	

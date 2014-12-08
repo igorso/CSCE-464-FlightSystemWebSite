@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
 	import=" java.util.ArrayList, beans.DetailedFlightBean"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,27 +28,21 @@
 					<div class="section group">
 						
 							<jsp:include page="ShoppingCartDisplay.jsp"></jsp:include>
+									
+							<c:if test="${ not empty shoppingCart }">
+								<form action="./ViewAndBook" name="flightSelector" method="post" onsubmit="return isCartEmpty()">
+									<input class="ClickButton" type="submit" value="Check out">
+								</form> <br>
+							</c:if>
 								
-							<%
-							if(request.getSession(false).getAttribute("shoppingCart") != null) {
-							%>	
-							<form action="./ViewAndBook" name="flightSelector" method="post" onsubmit="return isCartEmpty()">
-								<input class="ClickButton" type="submit" value="Check out">
-							</form>
 
-							<br>
-
-							<%
-							}
-							%>
-							
-							<form action="./FlightSearch.jsp">
+							<form action="<c:url value='./FlightSearch.jsp' />">
 								<input class="ClickButton" type="submit" value="Back to shop">
 							</form>
 							
 							<br>
 							
-							<form action="./ClearShoppingCart" method="post">
+							<form action="<c:url value='./ClearShoppingCart' />" method="post">
 								<input class="ClickButton" type="submit" value="Discard cart">
 							</form>
 

@@ -66,7 +66,7 @@ public class UpdateBooking extends HttpServlet {
 		ClientBean client= (ClientBean) session.getAttribute("clientBean");
 		if (client==null)
 		{
-			response.sendRedirect("Logout.java");
+			response.sendRedirect(response.encodeRedirectURL("Logout.java"));
 		}
 		UserBean userBean=client.getUser();
 				

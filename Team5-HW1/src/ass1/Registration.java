@@ -84,11 +84,11 @@ public class Registration extends HttpServlet {
 				System.out.println("Registration successful");
 				//We now can add a line in the organization table and the client table in the database:
 				UserSQL.update_client_organization(name, adress, user);
-				response.sendRedirect("Login.jsp");
+				response.sendRedirect(response.encodeRedirectURL("Login.jsp"));
 				
 			}else{
 				System.out.println("This username is already taken");
-				response.sendRedirect("Registration.jsp");
+				response.sendRedirect(response.encodeRedirectURL("Registration.jsp"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

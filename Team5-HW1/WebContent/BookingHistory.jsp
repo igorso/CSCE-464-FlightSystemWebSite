@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="beans.BookingBean, java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
+    
 <html>
 <head>
 
@@ -24,12 +26,6 @@
 
 					<div class="section group">
 						<div class="col span_1_of_2">
-							<%
-							HttpSession sess = request.getSession();
-							ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) sess.getAttribute("bookingSearch");
-							//bookings=new ArrayList<BookingBean>();
-							int nBookings = bookings.size();
-							%>
 							<div class="FlightTable" id="BookingsTableID">
 								<table>
 									<thead>
@@ -43,27 +39,23 @@
 										</tr>
 									</thead>
 									<tbody>
-										<%
-										for (int i = 0; i < nBookings; ++i) {
-											BookingBean booking = bookings.get(i);
-										%>
+										<c:forEach var="booking" items="${bookingSearch}">
 										<tr>
-											<td><label><%=booking.getId()%></label></td>
-											<td><label><%=booking.getDateOfBooking()%></label></td>
-											<td><label><%=booking.getFlightIds()%></label></td>
-											<td><label><%=booking.getNumberOfSeats()%></label></td>
-											<td><label><%=booking.getAccountId()%></label></td>
-											<td><label><%=booking.getTotalCost()%></label>
+											<td><label>${booking.id}</label></td>
+											<td><label>${booking.dateOfBooking}</label></td>
+											<td><label>${booking.flightIds}</label></td>
+											<td><label>${booking.numberOfSeats}</label></td>
+											<td><label>${booking.accountId}</label></td>
+											<td><label>${booking.totalCost}</label></td>
 										</tr>
-										<%
-										}
-										%>
+										</c:forEach>
+									</tbody>
 								</table>
 							</div>		
 						</div>
 						
 						<div class="col span_1_of_2">
-							<form action="./FlightSearch.jsp">
+							<form action="<c:url value='./FlightSearch.jsp' />"> 
 								<input class="ClickButton" type="submit" value="Home">
 							</form>
 						</div>

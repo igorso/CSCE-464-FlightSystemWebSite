@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
 	import=" java.util.ArrayList, beans.FlightResultBean"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,13 +26,8 @@
 				<div class="maincontent">
 
 					<div class="section group">
-						
-							<%
-								int nFlights = (Integer) request.getAttribute("numberOfResults");
-								ArrayList<FlightResultBean> dbResults = (ArrayList<FlightResultBean>) request
-										.getAttribute("dbResults");
-							%>
-							<form action="./FlightResults" name="flightSelector" method="post" onsubmit="return atLeastOneRadio()">
+
+							<form action="<c:url value='./FlightResults' />" name="flightSelector" method="post" onsubmit="return atLeastOneRadio()">
 								<div class="FlightTable" id="flightResultsTable">
 									<table>
 										<thead>
@@ -45,39 +41,31 @@
 												<td><label>View and Book</label></td>
 											</tr>
 										</thead>
-										<tbody>
-											<%
-												for (int i = 0; i < nFlights; ++i) {
-													FlightResultBean fInfo = dbResults.get(i);
-											%>
-											<tr>
-												<td><label><%=fInfo.getNumberOfFlight()%></label></td>
-												<td><label><%=fInfo.getDate()%></label></td>
-												<td><label><%=fInfo.getDepartureTime()%></label></td>
-												<td><label><%=fInfo.getArrivalTime()%></label></td>
-												<td><label><%=fInfo.getNumberOfStops()%></label></td>
-												<td><label><%=fInfo.getCost()%></label>
-													<input type="hidden" name="cost" value=<%=fInfo.getCost()%>></td>
-												<td><input type="radio" name="flightNumber"
-													value=<%=fInfo.getNumberOfFlight()%>></td>
-											</tr>
-											<%
-												}
-											%>
-										
+										<tbody>		
+											<c:forEach var="resultBean" items="${dbResults}">
+												<tr>
+													<td><label>${resultBean.numberOfFlight}</label></td>
+													<td><label>${resultBean.date}</label></td>
+													<td><label>${resultBean.departureTime}</label></td>
+													<td><label>${resultBean.arrivalTime}</label></td>
+													<td><label>${resultBean.numberOfStops}</label></td>
+													<td><label>${resultBean.cost}</label>
+														<input type="hidden" name="cost" value="${resultBean.cost}"></td>
+													<td><input type="radio" name="flightNumber"
+														value="${resultBean.numberOfFlight}"></td>
+												</tr>
+											</c:forEach>
+										</tbody>
 									</table>
 								</div>
 								<input class="ClickButton" type="submit" value="Continue">
 							</form>
 
 							<br>
-							<form action="./FlightSearch.jsp">
+							<form action="<c:url value='./FlightSearch.jsp' />">
 								<input class="ClickButton" type="submit" value="Back">
 							</form>
-
-						
-						
-						
+	
 					</div>
 
 				</div>

@@ -81,7 +81,7 @@ public class BookingHistory extends HttpServlet {
 		System.out.println(listBooking.size());
 
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("BookingHistory.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("BookingHistory.jsp"));
 		dispatcher.forward(request, response);
 	}
 	

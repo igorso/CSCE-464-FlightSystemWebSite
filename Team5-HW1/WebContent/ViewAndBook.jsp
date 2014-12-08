@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +14,7 @@ function updateCart()
 	if(validateNumberOfSeats()) {
 		var numberSeats = $("#numberSeats").val();
 		
-	    $.get("UpdateShoppingCart", {numberSeats:numberSeats}, function(data,status){
+	    $.get("UpdateShoppingCart;jsessionid=${pageContext.session.id}", {numberSeats:numberSeats}, function(data,status){
 	    
 	    	$("#results").html("Added to the shopping cart");
 	    	$("#add").hide();// We hide the button so the user can not add several times the same flight.
@@ -29,9 +30,6 @@ function updateCart()
 <body>
 
 	<jsp:include page="Header.jsp"></jsp:include>
-
-	<jsp:useBean id="selectedFlight" type="beans.DetailedFlightBean"
-		scope="session" />
 
 	<div id="wrapper">
 		<div id="headcontainer">
@@ -54,38 +52,31 @@ function updateCart()
 									<tbody>
 										<tr>
 											<td><label>Flight number</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="id" /></label></td>
+											<td><label>${selectedFlight.id}</label></td>
 										</tr>
 										<tr>
 											<td><label>Plane number</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="plane" /></label></td>
+											<td><label>${selectedFlight.plane}</label></td>
 										</tr>
 										<tr>
 											<td><label>Operator</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="operator" /></label></td>
+											<td><label>${selectedFlight.operator}</label></td>
 										</tr>
 										<tr>
 											<td><label>Source</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="source" /></label></td>
+											<td><label>${selectedFlight.source}</td>
 										</tr>
 										<tr>
 											<td><label>Destination</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="destination" /></label></td>
+											<td><label>${selectedFlight.destination}</label></td>
 										</tr>
 										<tr>
 											<td><label>Departure:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="departure" /></label></td>
+											<td><label>${selectedFlight.departure}</label></td>
 										</tr>
 										<tr>
 											<td><label>Arrival:</label></td>
-											<td><label><jsp:getProperty name="selectedFlight"
-														property="arrival" /></label></td>
+											<td><label>${selectedFlight.arrival}</label></td>
 										</tr>
 									</tbody>
 								</table>
@@ -93,7 +84,7 @@ function updateCart()
 						</div>
 						
 						<div class="col span_1_of_3">						
-							<form action="./ViewAndBook" name="numberOfSeatsForm"
+							<form action="<c:url value='./ViewAndBook' />" name="numberOfSeatsForm"
 								method="post">
 								<p><label class="field">Choose number of seats:</label> <input class="TextBox" type="number"
 									min="1" max="12" name="numberOfSeats" id="numberSeats"></p>
@@ -102,19 +93,19 @@ function updateCart()
 							
 							<br />
 	
-							<form action="./FlightSearch" method="post">
+							<form action="<c:url value='./FlightSearch' />" method="post">
 								<input class="ClickButton" type="submit" name="backToFlightResults" value="Back">
 							</form>
 							
 							<br />
 	
-							<form action="./ShoppingCart.jsp">
+							<form action="<c:url value='./ShoppingCart.jsp' />">
 								<input class="ClickButton" type="submit" value="Go to the shopping cart">
 							</form>
 							
 							<br />
 	
-							<form action="./FlightSearch.jsp">
+							<form action="<c:url value='./FlightSearch.jsp' />">
 								<input class="ClickButton" type="submit" value="Home">
 							</form>
 						</div>

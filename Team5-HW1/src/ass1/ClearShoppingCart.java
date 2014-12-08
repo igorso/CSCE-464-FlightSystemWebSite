@@ -59,7 +59,7 @@ public class ClearShoppingCart extends HttpServlet {
 		session.setAttribute("shoppingCart", null);
 
 		//Dispatch results to view JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(response.encodeURL("FlightSearch.jsp"));
 		dispatcher.forward(request, response);
 	}
 }
