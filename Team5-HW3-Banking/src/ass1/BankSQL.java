@@ -106,7 +106,7 @@ public class BankSQL {
 	 * @return 0 if everything was OK,  1 if the account was not found,  2 if there was not enough money, 3 if there was a database problem 
 	 * @throws SQLException the SQL exception
 	 */
-	public static int Payement(int id, int holder_id, int routing_number, int cost) throws SQLException
+	public static int Payement(int id, int holder_id, int routing_number, int cost,int pin) throws SQLException
 	{
 		//Return 0 if everything was OK
 		//Return 1 if the account was not found
@@ -117,6 +117,7 @@ public class BankSQL {
 		param.add(id);
 		param.add(holder_id);
 		param.add(routing_number);
+		param.add(pin);
 		//param.add(cost);
 		
 		
@@ -124,7 +125,8 @@ public class BankSQL {
 				+ "FROM accounts "
 				+ " WHERE id=? "
 				+ "AND holder_id=? "
-				+ "AND routing_number=?"
+				+ "AND routing_number=? "
+				+ "AND pin=?"
 				, param);
 		param.clear();
 		if (rs1 != null){

@@ -74,7 +74,7 @@
 						<div class="col span_1_of_3">
 							<form action="<c:url value='./TransactionConfirmation' />" name="bankInfo" method="post" onsubmit="return validateForm()">
 								<label class="field">Account:</label><input class="TextBox" type="text" name="accountId"><br>
-								<label class="field">Holder:</label><input class="TextBox" type="text" name="holderId"><br>
+								<label class="field">Hvcwgdsgdfhgfxgr:</label><input class="TextBox" type="text" name="holderId"><br>
 								<label class="field">Routing:</label><input class="TextBox" type="text" name="routing"><br>
 								<input class="ClickButton" type="submit" value="Confirm" align="right">
 							</form>

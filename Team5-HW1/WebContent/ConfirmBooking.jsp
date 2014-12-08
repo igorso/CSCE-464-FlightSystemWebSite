@@ -19,15 +19,11 @@ function askBank()
 	var holderId = $("#holderId").val();
 	var routing = $("#routing").val();
 	var totalCost = $("#Cost").text();
-	alert("Authoritazing the "+totalCost+"$ payement");
-	//alert("We will ask the bank")
-    $.get("/Team5-HW3-Banking/Bank;jsessionid=${pageContext.session.id}", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost}, function(data,status,xhr){
-    	//alert("Bank finished to work");
-    	//alert(data);
-    	 var response = data.split('#');
-    	//alert(response[0]);
-    	//alert(response[1]);
+	var pin = $("#pin").val();
 
+	alert("Authoritazing the "+totalCost+"$ payement");
+    $.get("/Team5-HW3-Banking/Bank;jsessionid=${pageContext.session.id}", {accountId:accountId,holderId:holderId,routing:routing,totalCost:totalCost,pin:pin}, function(data,status,xhr){
+    	 var response = data.split('#');
     	$("#bResults").html(response[1]);
     	if(response[0]=="Work")
     	{
@@ -112,6 +108,7 @@ function printTicket()
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>
+								<label class="field" >Pin:</label><input class="TextBox" type="text" id="pin"><br>
 								<input class="ClickButton"  type="button" value="Pay" onClick="askBank()">
 								
 							</form>

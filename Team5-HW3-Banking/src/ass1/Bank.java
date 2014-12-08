@@ -59,10 +59,11 @@ public class Bank extends HttpServlet {
 		int holder_id=Integer.parseInt((String) request.getParameter("holderId"));
 		int routing_number=Integer.parseInt((String) request.getParameter("routing"));
 		int totalCost=Integer.parseInt((String) request.getParameter("totalCost"));
+		int pin=Integer.parseInt((String) request.getParameter("pin"));
 		System.out.println(totalCost);
 		//Query the database to make the payment:
 		try {
-			payementError=BankSQL.Payement(account_id,holder_id, routing_number,totalCost);
+			payementError=BankSQL.Payement(account_id,holder_id, routing_number,totalCost,pin);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
