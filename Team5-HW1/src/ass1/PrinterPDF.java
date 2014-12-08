@@ -76,9 +76,9 @@ public class PrinterPDF extends HttpServlet {
 		
 		
 		//Get the data from the request:
-		 String name = request.getParameter("name");
-	     String age = request.getParameter("age");
-	     String sex = request.getParameter("sex");
+		 String name = Filter.cleanParameter(request.getParameter("name"));
+	     String age = Filter.cleanParameter(request.getParameter("age"));
+	     String sex = Filter.cleanParameter(request.getParameter("sex"));
 	     String toWrite= name+ "\n"+ age+ "\n" +sex+"\n";
 	     System.out.println(toWrite);
 		//Create the PDF with the beans:

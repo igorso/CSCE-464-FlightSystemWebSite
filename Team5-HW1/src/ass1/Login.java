@@ -74,8 +74,8 @@ public class Login extends HttpServlet {
 		//request.getSession().removeAttribute("userBean");
 		
 		//get request parameters for userID and password
-        String user = request.getParameter("user");
-        String pwd = request.getParameter("pwd");
+        String user = Filter.cleanParameter(request.getParameter("user"));
+        String pwd = Filter.cleanParameter(request.getParameter("pwd"));
         
         UserBean userBean = new UserBean();
         userBean.setEmail(user);

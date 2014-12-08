@@ -45,7 +45,7 @@ public class UpdateShoppingCart extends HttpServlet {
 		//Get the data:
 		DetailedFlightBean toAdd= null;
 		ArrayList<DetailedFlightBean> shoppingCart =  null;
-		String numberSeats = request.getParameter("numberSeats");
+		String numberSeats = Filter.cleanParameter(request.getParameter("numberSeats"));
 		HttpSession session = request.getSession();
 		if(session.getAttribute("shoppingCart") == null) {
 			shoppingCart =  new ArrayList<DetailedFlightBean>();

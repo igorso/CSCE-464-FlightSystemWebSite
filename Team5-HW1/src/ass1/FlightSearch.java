@@ -62,15 +62,16 @@ public class FlightSearch extends HttpServlet {
 		
 		FlightSearchBean flightBean;
 		
-		if(request.getParameter("backToFlightResults") == null) { //session.getAttribute("flightBean") == null) {
+		//session.getAttribute("flightBean") == null) {
+		if(Filter.cleanParameter(request.getParameter("backToFlightResults")) == null) { 
 			System.out.println("We have to create a new search flight");
 			flightBean = new FlightSearchBean();
 			
-			String source= request.getParameter("source");
-			String destination =request.getParameter("destination");
-			String date =request.getParameter("date");
-			String nSeats =request.getParameter("nSeats");
-			String flightClass =request.getParameter("flightClass");
+			String source= Filter.cleanParameter(request.getParameter("source"));
+			String destination =Filter.cleanParameter(request.getParameter("destination"));
+			String date =Filter.cleanParameter(request.getParameter("date"));
+			String nSeats =Filter.cleanParameter(request.getParameter("nSeats"));
+			String flightClass =Filter.cleanParameter(request.getParameter("flightClass"));
 
 			flightBean.setSource(source);
 			flightBean.setDateOfTravel(date);
