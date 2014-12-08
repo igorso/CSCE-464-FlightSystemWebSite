@@ -12,8 +12,9 @@
 				<jsp:forward page="./Login.jsp"></jsp:forward>
 			</c:when>
 			<c:otherwise>
-				${clientBean.user.fullName} 
-				${clientBean.organization.name}
+				 
+				<c:out value="${clientBean.user.fullName}" />
+				<c:out value="${clientBean.organization.name}" />
 					
 				<a href="<c:url value='BookingHistory' />">Booking History</a>
 				<a href="<c:url value='Logout' />">Logout</a>
