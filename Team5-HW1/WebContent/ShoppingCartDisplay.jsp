@@ -21,12 +21,12 @@
 				<tbody>
 					<c:forEach var="flight" items="${ shoppingCart }">
 						<tr>
-							<td><label>${flight.id}</label></td>
-							<td><label>${flight.plane}</label></td>
-							<td><label>${flight.departure}</label></td>
-							<td><label>${flight.numberOfSeat}</label></td>
-							<td><label>${flight.totalCost}</label></td>
-							<td><label>${flight.cost}</label>
+							<td><label><c:out value="${flight.id}" /></label></td>
+							<td><label><c:out value="${flight.plane}" /></label></td>
+							<td><label><c:out value="${flight.departure}" /></label></td>
+							<td><label><c:out value="${flight.numberOfSeat}" /></label></td>
+							<td><label><c:out value="${flight.totalCost}" /></label></td>
+							<td><label><c:out value="${flight.cost}" /></label>
 						</tr>
 					</c:forEach>
 			</table>

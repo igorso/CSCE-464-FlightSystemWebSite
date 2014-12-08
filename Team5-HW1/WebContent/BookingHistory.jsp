@@ -41,12 +41,12 @@
 									<tbody>
 										<c:forEach var="booking" items="${bookingSearch}">
 										<tr>
-											<td><label>${booking.id}</label></td>
-											<td><label>${booking.dateOfBooking}</label></td>
-											<td><label>${booking.flightIds}</label></td>
-											<td><label>${booking.numberOfSeats}</label></td>
-											<td><label>${booking.accountId}</label></td>
-											<td><label>${booking.totalCost}</label></td>
+											<td><label><c:out value="${booking.id}" /></label></td>
+											<td><label><c:out value="${booking.dateOfBooking}" /></label></td>
+											<td><label><c:out value="${booking.flightIds}" /></label></td>
+											<td><label><c:out value="${booking.numberOfSeats}" /></label></td>
+											<td><label><c:out value="${booking.accountId}" /></label></td>
+											<td><label><c:out value="${booking.totalCost}" /></label></td>
 										</tr>
 										</c:forEach>
 									</tbody>

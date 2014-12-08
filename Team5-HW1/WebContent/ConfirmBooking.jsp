@@ -108,7 +108,7 @@ function printTicket()
 							</div>
 							<form action="<c:url value='./TransactionConfirmation' />" name="bankInfo" method="post" id="payement" onsubmit="return validateForm()">
 								Total cost to pay:
-								<p id="Cost" >${totalCost}</p>
+								<p id="Cost" ><c:out value="${totalCost}" /></p>
 								<label class="field" >Account:</label><input class="TextBox" type="text" id="accountId" ><br>
 								<label class="field" >Holder:</label><input class="TextBox" type="text" id="holderId"><br>
 								<label class="field" >Routing:</label><input class="TextBox" type="text" id="routing"><br>

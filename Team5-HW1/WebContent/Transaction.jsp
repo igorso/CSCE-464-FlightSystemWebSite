@@ -32,39 +32,39 @@
 									<tbody>
 										<tr>
 											<td><label>Flight number</label></td>
-											<td><label>${selectedFlight.id}</label></td>
+											<td><label><c:out value="${selectedFlight.id}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Number of seats:</label></td>
-											<td><label>${seats}</label></td>
+											<td><label><c:out value="${seats}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Cost:</label></td>
-											<td><label>${cost}</label></td>
+											<td><label><c:out value="${cost}}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Plane number</label></td>
-											<td><label>${selectedFlight.plane}</label></td>
+											<td><label><c:out value="${selectedFlight.plane}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Operator</label></td>
-											<td><label>${selectedFlight.operator}</label></td>
+											<td><label><c:out value="${selectedFlight.operator}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Source</label></td>
-											<td><label>${selectedFlight.source}</label></td>
+											<td><label><c:out value="${selectedFlight.source}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Destination</label></td>
-											<td><label>${selectedFlight.destination}</label></td>
+											<td><label><c:out value="${selectedFlight.destination}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Departure:</label></td>
-											<td><label>${selectedFlight.departure}</label></td>
+											<td><label><c:out value="${selectedFlight.departure}" /></label></td>
 										</tr>
 										<tr>
 											<td><label>Arrival:</label></td>
-											<td><label>${selectedFlight.arrival}</label></td>
+											<td><label><c:out value="${selectedFlight.arrival}" /></label></td>
 										</tr>
 									</tbody>
 								</table>

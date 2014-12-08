@@ -44,15 +44,15 @@
 									onsubmit="return validateForm()">
 									
 									<p><label class="field">Source:</label> <input class="TextBox" type="text" name="source"
-										value="${flightBean.source}"></p>
+										value="<c:out value="${flightBean.source}" />"></p>
 									<p><label class="field">Destination:</label> <input class="TextBox" type="text"
 										name="destination"
-										value="${flightBean.destination}"></p>
+										value="<c:out value="${flightBean.destination}" />"></p>
 									<p><label class="field">Date of travel:</label> <input class="datepicker" type="text" name="date" id="inputdate"
-										value="${flightBean.dateOfTravel}"></p>
+										value="<c:out value="${flightBean.dateOfTravel}" />"></p>
 									<p><label class="field">Number of seats:</label> <input class="TextBox" type="text"
 										name="nSeats"
-										value="${flightBean.numberOfSeats}"></p>
+										value="<c:out value="${flightBean.numberOfSeats}" />"></p>
 									<p><label class="field">Class:</label> <select class="TextBox" name="flightClass">
 										<option value="economy">Economy
 										<option value="business">Business

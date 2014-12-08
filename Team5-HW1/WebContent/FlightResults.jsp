@@ -44,15 +44,15 @@
 										<tbody>		
 											<c:forEach var="resultBean" items="${dbResults}">
 												<tr>
-													<td><label>${resultBean.numberOfFlight}</label></td>
-													<td><label>${resultBean.date}</label></td>
-													<td><label>${resultBean.departureTime}</label></td>
-													<td><label>${resultBean.arrivalTime}</label></td>
-													<td><label>${resultBean.numberOfStops}</label></td>
-													<td><label>${resultBean.cost}</label>
-														<input type="hidden" name="cost" value="${resultBean.cost}"></td>
+													<td><label><c:out value="${resultBean.numberOfFlight}" /></label></td>
+													<td><label><c:out value="${resultBean.date}" /></label></td>
+													<td><label><c:out value="${resultBean.departureTime}" /></label></td>
+													<td><label><c:out value="${resultBean.arrivalTime}" /></label></td>
+													<td><label><c:out value="${resultBean.numberOfStops}" /></label></td>
+													<td><label><c:out value="${resultBean.cost}" /></label>
+														<input type="hidden" name="cost" value="<c:out value="${resultBean.cost}" />"></td>
 													<td><input type="radio" name="flightNumber"
-														value="${resultBean.numberOfFlight}"></td>
+														value="<c:out value="${resultBean.numberOfFlight}" />"></td>
 												</tr>
 											</c:forEach>
 										</tbody>
